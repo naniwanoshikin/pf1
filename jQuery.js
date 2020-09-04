@@ -1,47 +1,57 @@
 $(function() {
 
-
-  // $('p').css('color', 'red').hide(7500);
+  // $('p').css('color', 'red').css('background', 'skyblue').hide(7500); // メソッドチェーン
   // $('p').addClass('style'); //クラスつける
   // $('p').text('change'); // 文字列を書き換える
   // $('p').html('<a href="#about" data-all="pro">自己紹介</a>'); //タグも含めて取得
   // $('p').empty(); // 文字を消す
   // $('p').remove(); // 要素自体を消す
   // $('input').val('helloagain'); // 値を入力
-
-
-  // $('#install').css('color', 'red').css('background', 'skyblue');
-
   // $('aside').css('display', 'block'); //  
   // 属性セレクタ
   // $('a[href="members/index.html"]').css('background', 'red');
   // $('a[href!="members/index.html"]').css('background', 'red'); //~ない
   // $('a[href*="index"]').css('background', 'red'); //含む
   // $('a[href$="t"]').css('background', 'red'); //で終わる
-  // 属性の値を取得
-  // console.log($('a').attr('href')); //属性の値
-  // console.log($('a').data('all')); //カスタムデータ属性取得
-  // $('#open').toggle(1500); //繰り返し処理
-  // $('#open').fadeOut(1500, function() {
-    // alert('okkkkkkkkk!');  //消えた後の処理もかける
+  // console.log($('a').attr('href')); // 属性の値を取得
+  // console.log($('a').data('all')); // カスタムデータ属性取得
+  // $('#open').toggle(1500); // 繰り返し処理
+  // $('#open').fadeOut(1500, function() { // 消えた後、
+    // alert('okkkkkkkkk!');  // アラート表示
   // });
+  // $('aside').slideDown(1500); // 元々非表示にしておく
 
 
 
+// header
 
-$('section > h1').slideDown(1500); //元々非表示にしておかないといけない
+// h1大きさ
+$('#install')
+.mouseover(function() {  //マウスがのった時
+  $(this).animate({'font-size': '20px'}, 300);
+})
+.mouseout(function() {  //マウスが外れた時
+  $(this).animate({'font-size': '18px'}, 300);
+})
+.mousemove(function(e) {
+  // $(this).text(e.pageX);  //マウスの座標テキストイベントを表示
+});
 
-// 広告
-// $('aside').slideDown(1500);
+// h1へ戻る
+$('#install').click(function() {
+  $('html, body').animate(
+    {'scrollTop': 0},
+    350); //速さ
+});
 
-
-
-
-
-
-
-
-
+// ナビゲーション
+$('header a').click(function() {
+  var id = $(this).attr('href'); //各id取得
+  var position = $(id).offset().top; //高さ取得
+  $('html,body').animate({ 
+    'scrollTop': position - 100 //その高さへ
+  }, 'fast');
+});
 // ドロップダウンメニュー
 $('.menubtn').click(function() {
   var $answer = $('nav').find('.acord'); //nav直下のacordクラス
@@ -49,7 +59,6 @@ $('.menubtn').click(function() {
     $answer.removeClass('open');
     $answer.slideUp(); //隠す
     // $('nav').find('.menubtn').text('+'); //タグの中身書き換え
-
   } else {
     $answer.addClass('open'); 
     $answer.slideDown(); //表示    
@@ -58,33 +67,17 @@ $('.menubtn').click(function() {
 });
 
 
+// main
 
-// ナビゲーション誘導
-$('header a').click(function() {
-  var id = $(this).attr('href'); //id名取得
-  var position = $(id).offset().top; //高さ取得
-  $('html,body').animate({ 
-    'scrollTop': position - 100 //高さ
-  }, 'fast');
+// Vanish!!!ボタン
+$('.van').click(function() {
+  var p = $('<p id="vani" style="font-size: 24px;">').text('Hello World!').addClass('vanish'); //vanish
+  $('#wellcome').after(p); //前に挿入
 });
-
-
-
-
-// header h1が大きくなるメソッドチェーン
-$('#install')
-.mouseover(function() {  //マウスがのった時
-  $(this).animate({'font-size': '24px'}, 300);
-})
-.mouseout(function() {  //マウスが外れた時
-  $(this).animate({'font-size': '20px'}, 300);
-})
-.mousemove(function(e) {
-  // $(this).text(e.pageX);  //マウスの座標テキストイベントを表示
+// ONメソッド：読み込まれた時に存在していない要素を処理
+$('body').on('click', '.vanish', function() { //clickするとvanishする機能
+  $(this).remove(); //削除
 });
-
-
-
 
 
 // 取り消し線
@@ -94,11 +87,7 @@ $('.script > li').click(
 });
 
 
-
-
-
-
-
+// 地域紹介
 //◀️▶️ボタン表示の状態について定義（下記1, 2に適用）
 function toggleChange() {
   var slideIndex = $('.slide').index($('.active')); //アクティブ番号
@@ -121,7 +110,6 @@ $('.hide').click(function() {
   // ◀️▶️ボタン表示
   toggleChange();
 });
-
 //２、◀️▶とアクティブクラス
 $('.change').click(function() {
   var $activer = $('.active'); //active状態を
@@ -131,7 +119,6 @@ $('.change').click(function() {
   } else {
     $activer.prev().addClass('active'); // その前をactiveにする
   }
-  
   // ◀️▶️ボタン表示
   toggleChange();
 });
@@ -141,14 +128,7 @@ $('.change').click(function() {
 
 
 
-
-
-
-
-
-
-
-// フォームのCSS変更
+// フォーム
 $('#age')
 .focus(function() { //クリックした時
   $(this).css('color', 'green');
@@ -156,44 +136,20 @@ $('#age')
 .blur(function() {  //外した時
   $(this).css('color', 'red');
 })
-.change(function() {  //値を変えた時
+.change(function() {  //値を変えると、
   alert('年齢を入力しました');
 });
 
 
 // SNSアイコン
-$('.animated-hover').hover( //マウスが
-  function() {
-  $(this).animate({'font-size': '18px'}, 300); //のっている時
-  }, function() {
-  $(this).animate({'font-size': '16px'}, 300); //のっていない時
-  }
-);
+// $('.animated-hover').hover( //マウスが
+//   function() {
+//   $(this).animate({'font-size': '18px'}, 300); //のっている時
+//   }, function() {
+//   $(this).animate({'font-size': '16px'}, 300); //のっていない
+//   }
+// );
 
-
-// Vanish!!!!ボタン
-$('.call > button').click(function() {
-  var p = $('<p>').text('vanish!!!').addClass('vanish'); //vanish
-  $(this).before(p); //前に挿入
-});
-// ONメソッド：読み込まれた時に存在していない要素を処理
-$('body').on('click', '.vanish', function() { //clickするとvanishする機能
-  $(this).remove(); //削除
-});
-
-
-
-// ページトップへ
-$('#install').click(function() {
-  $('html, body').animate(
-    {'scrollTop': 0},
-    350); //速さ
-});
-$('#top').click(function() {
-  $('html, body').animate(
-    {'scrollTop': 0},
-    350); //速さ
-});
 
 
 
