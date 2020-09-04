@@ -4,31 +4,38 @@
 <head>
   <meta charaset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>しきっちインストール</title>
+  <title>しきっちワールド</title>
   <meta name="description" content="shikitti INSTALLです">
   <!-- ファビコン -->
   <link rel="icon" href="img/nezcon.ico">
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- font-awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
-  <script src="https://kit.fontawesome.com/9d3b29f40b.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- scroll Reveall -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- font-awesome -->
+  <script src="https://kit.fontawesome.com/9d3b29f40b.js" crossorigin="anonymous"></script>
+  <!-- font-awesome-animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+  <!-- ハートマーク -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- chart.jsのCDN読み込み -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
+  </script>
 </head>
 
 
 <body>
   <header>
-    <h1 id="install">しきっちインストール</h1>
+    <h1 id="install">しきっちワールド</h1>
     <nav class="nav">
       <p class="menubtn"><i class="far fa-caret-square-down"></i></p>
       <ul class="acord">
-        <li><a href="#about" data-all="pro">自己紹介</a></li>
-        <li><a href="#feat">特徴</a></li>
-        <li><a href="#town">地域紹介</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#about" id="nav1" data-all="pro">自己紹介</a></li>
+        <li><a href="#feat" id="nav2">特徴</a></li>
+        <li><a href="#town" id="nav3">地域紹介</a></li>
+        <li><a href="#contact" id="nav4">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
@@ -39,14 +46,11 @@
 
     <!-- ようこそ -->
     <section class="service">
-      <button>English</button>
-      <h1 id="wellcome" data-translation="Dotinstall" title="見出しです">ようこそ</h1>
-      <p><span class="" id="show"></span><br>個別紹介サイトです！</p>
+      <button class="pindex">Index</button>
+      <button class="english">English</button>
+      <button class="van">Vanish</button>
+      <h1 id="wellcome" data-translation="Dotinstall" title="Hello World">Hello World</h1>
 
-      <!-- <div class="syokaiadv">
-        <div class="syokai">
-        </div>
-      </div> -->
 
       <!-- 広告 -->
       <aside>
@@ -71,6 +75,7 @@
           <h5>こんにちは！！</h5>
         </div>
       </aside>
+
     </section>
 
 
@@ -78,74 +83,97 @@
 
     <!-- 自己紹介 -->
     <section class="about">
-        <h1 id="about">自己紹介</h1>
-          <h2 id="profile">プロフィール</h2>
-          <!-- 詳細ボタン -->
-          <div class="btn" id="open">詳細はこちら</div>
-          <!-- 覆いかぶさるグレーのマスク -->
-          <div id="mask" class="hidden"></div>
-          <!-- モーダルウィンドウ -->
-          <section id="modal" class="hidden">
+      <h1 id="about">自己紹介</h1>
+        <div class="flex">
+          <div class="front">
+            <!-- 顔 -->
             <div class="icon">
-              <img class="boku" src="img/face.jpeg"><br>        
-              <div class="logo">shikiti</div>
+              <img src="img/face.jpeg"><br>
             </div>
-            <table border="1" class="his">
-              <thead>
-                <tr>
-                  <th>年</th>
-                  <th><状況></th>
-                  <th>出来事</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1991</td>
-                  <td>誕生</td>
-                  <td>OsakaCity</td>
+            <!-- プロフィール -->
+            <h2 id="profile">プロフィール</h2>
+            <p>式谷政廣 / 1991年生まれ</p>
+            <p>工学部卒（橋梁）</p>
+            <!-- 詳細ボタン -->
+            <div class="btn" id="open">年表ボタン</div>
+            <!-- マスク -->
+            <div id="mask" class="hidden"></div>
+            <!-- モーダルウィンドウ -->
+            <section id="modal" class="hidden">
+              <p>年表</p>
+              <!-- テーブル -->
+              <table border="1" width="" cellpadding="8" class="" bordercolor="#333333">
+                <thead>
+                  <tr bgcolor="ffe0b6">
+                    <th>年</th>
+                    <th colspan="2">できごと</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <tr>
-                  <td>2006</td>
-                  <td>高校</td>
-                  <td>将棋してました</td>
-                  <tr>
-                  <td>2009</td>
-                  <td>趣味</td>
-                  <td>空手始めました</td>
-                  <tr>
-                  <td>2012</td>
-                  <td>研究</td>
-                  <td>柱の地震解析</td>
-                  <tr>
-                  <td>2016</td>
-                  <td>業務</td>
-                  <td>自動車部品の設計検討</td>
-                  <tr>
-                  <td>2017</td>
-                  <td>哲学</td>
-                  <td>パルクール始めました</td>
-                  <tr>
-                  <td>2020</td>
-                  <td>転活</td>
-                  <td>プログラミング開始</td>
-                </tr>                
-              </tbody>
-            </table>
-            <div class="btn" id="close">閉じる</div>
-          </section>
-          <!-- スキルセット -->
-          <h2 id="skill">スキル</h2>
+                    <td>1991</td>
+                    <td>誕生</td>
+                    <td>OsakaCity</td>
+                    <tr>
+                    <td>2006</td>
+                    <td>高校</td>
+                    <td>将棋してました</td>
+                    <tr>
+                    <td>2009</td>
+                    <td>趣味</td>
+                    <td>空手始めました</td>
+                    <tr>
+                    <td>2012</td>
+                    <td>研究</td>
+                    <td>柱の地震解析</td>
+                    <tr>
+                    <td>2016</td>
+                    <td>業務</td>
+                    <td>自動車部品の設計検討</td>
+                    <tr>
+                    <td>2017</td>
+                    <td>哲学</td>
+                    <td>パルクール始めました</td>
+                    <tr>
+                    <td>2020</td>
+                    <td>転活</td>
+                    <td><font color="#ed1c24">プログラミング開始</font></td>
+                  </tr>                
+                </tbody>
+              </table>
+              <!-- <div class="btn" id="close">閉じる</div> -->
+            </section>
+
+            <h2 id="hobby">趣味</h2>
+            <ul class="hobby">
+              <p>パルクール
+                <!-- instagram -->
+                <a href="http://instagram.com/shikitch_pk">
+                  <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
+                </a>、写真、将棋</p>
+            </ul>
+          </div>
+          <div class="back">
+            <!-- スキルセット -->
+            <h2 id="skill">スキル</h2>
+            <!-- グラフ -->
+            <div class="chart">
+              <!-- ここの幅は比率。その為、divで囲った。 -->
+              <canvas id="my_chart" width="10" height="10">
+                Canvas not supported...
+              </canvas>
+            </div>
+
             <ul class="script">
-              <li>言語・・・HTML, CSS, JavaScript, jQuery, Sass</li>
-              <li>フレームワーク、ライブラリ・・・Bootstrap, Laravel</li>
+              <li>フレームワーク・・・Bootstrap</li>
               <li>ツール・・・Git, docker</li>
               <li>OS・・・</li>
+              <li>その他・・・Lightroom、Fresco</li>
             </ul>
             <!-- <script src="todolist.js"></script> -->
             
-          <h2 id="hobby">趣味</h2>
-            <ul class="paru">
-              パルクール
-            </ul>
+          </div>
+        </div>
     </section>
     
 
@@ -160,12 +188,18 @@
         <!-- １枚目 -->
         <section>
           <div class="pic">
-            <img src="cafe/img/cafe1.jpg" alt="カフェ">
+            <img src="cafe/img/cafe1.jpg">
           </div>
 
           <div class="tex">
             <h2>
-              <a id="cafe" href="cafe/cafe.html" target="_blank">カフェページ</a>
+              <a id="cafe" href="cafe/cafe.html" target="_blank">カフェ</a>
+              <!-- ハートのアイコン -->
+              <label class="like">
+                <input type="checkbox">
+                <i class="material-icons heart">favorite</i>
+                <div class="ripple"></div>
+              </label>
             </h2>
             <p>カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！</p>
           </div>
@@ -187,7 +221,7 @@
         <!-- ３枚目 -->
         <section>
           <div class="pic">
-            <img src="img/ichinomiya.jpeg" alt="">
+            <img src="img/aich15.jpg" alt="">
           </div>
           <div class="tex">
             <h2>
@@ -236,7 +270,7 @@
           <img src="img/aich4.jpg">
           <div class="tex">
             <h2>小牧市</h2>
-            <p>工業都市として発展しました。近くには、たこ焼き屋さんやサーティワンアイスクリーム、ラーメン屋さん、トランポリン、お城があります。</p>
+            <p>工業都市として発展しました。近くには、たこ焼き屋さんやラーメン屋さん、アイスクリーム、トランポリン屋さんがあります。</p>
           </div>
         </li>
       </ul>
@@ -269,13 +303,13 @@
     <!-- お問い合わせ -->
     <section class="question">
       <h1 id="contact">
-        <span class="faa-parent"><i class="fas fa-envelope fa-1x faa-ring"></i></span>
+        <span class="faa-parent animated-hover"><i class="fas fa-envelope fa-sm faa-ring"></i></span>
         お問い合わせ
       </h1>
       <p id="free">どうぞお気軽にご連絡ください。</p>
-      <div class="info">
-        <div class="form">
-          <form action="osaka.php" method="post" class="form">
+      <!-- フォーム -->
+      <form action="osaka.php" method="post" class="form">
+        <div class="info">
           <!-- お名前 -->
           <label>お名前（必須）<input class="textline" type="text" placeholder="大阪太郎" name="username"></label>
           <br>
@@ -285,15 +319,15 @@
           <p><label>Email（必須）<input class="textline" type="text" placeholder="osaka@gmail.com"></label></p>
 
           <!-- 年齢 -->
-          <label for="age">年齢</label>
-          <select class="textage" id="age" name="age">
-            <!-- <select name="age" id="age" size="4" multiple> -->
-              <!-- <option value="" selected>1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option> -->
-          </select>
-          
+            <label for="age">年齢</label>
+            <select class="textage" id="age" name="age">
+              <!-- <select name="age" id="age" size="4" multiple> -->
+                <!-- <option value="" selected>1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option> -->
+            </select>
+                
           <!-- 連絡方法 -->
           <p><fieldset class="profession">
               <legend>ご希望の連絡方法</legend>
@@ -301,103 +335,65 @@
               <label><input type="radio" name="profession">電話</label>
               <label><input type="radio" name="profession">どちらでも可</label>
             </fieldset></p>
-          
+        </div>
+        <div>
           <label>お問い合わせ内容（必須）
             <p><textarea class="textline" name="" id="" cols="40" rows="10" placeholder="希望事項（1000字まで）"></textarea></p>
           </label>
-          <!-- 送信ボタン -->
-          <input type="submit" value="送信する" class="submit">
-          </form>
-        </div>
- 
-
-        <!-- アクセス -->
-        <div class="location">
-          <h3 style="text-decoration: underline;">
-            くるり大阪支店
-          </h3>
-          <p>
-            <a href="https://goo.gl/maps/dyRaiAg1AFoYp3a99" target="_blank"><i class="fas fa-map-marker-alt"></i></a>：大阪市西成区天下茶屋１丁目2番地<br>
-            電話：0120-115-115<br>
-            営業時間：9:00~16:00<br>
-            休日：金曜<br>
-          </p>
-          
-          <!-- SNS -->
-          <div class="sns">
-            <ul>
-              <!-- ハートのアイコン -->
-              <li>
-                <label class="like">
-                  <input type="checkbox">
-                  <i class="material-icons heart">favorite</i>
-                  <div class="ripple"></div>
-                </label>
-              </li>
-              <!-- twitter -->
-              <li>
-                <a href="http://twitter.com/power_of_shikin">
-                  <span class="faa-parent fa-stack animated-hover">
-                    <i class="fas fa-square fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse fa-flip-horizontal faa-wrench"></i>                
-                  </span>
-                </a>
-              </li>
-              <!-- instagram -->
-              <li>
-                <a href="http://instagram.com/shikitch_pk">
-                  <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-2x faa-spin"></i></span>
-                </a>              
-              </li>
-              <!-- youtube -->
-              <li>
-                <a href="https://www.youtube.com/channel/UCyydUwy-0x2Tc-FcCWBQncw?view_as=subscriber">
-                  <span class="faa-parent animated-hover">
-                    <i class="fab fa-youtube fa-2x faa-ring"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>             
-          <!-- 地図 -->
-          <!-- <div class="location-map">
-            <iframe src="" width="800" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-          </div> -->
-        </div>
+        </div> 
+      </form>
+      <!-- 送信ボタン -->
+      <div class="sub">
+        <input type="submit" value="送信する" class="submit">
       </div>
-    </section>
-        
-    <section class="call">
-      <h2 id="click">クリックしよう</h2>
-      <button class="btn">バニッシュ</button>      
-    </section>
+    </section>        
   </main>
   
   <!-- フッター -->
   <footer>
     <a href="#top">© shikitti.Portfolio.2020 </a>
-    <a class="share" href="https://twitter.com/intent/tweet?text=学習方法で困っている方々必見&url=https://dotinstall.com/lessons&related=@power_of_shikin" target="_blank" rel="nofollow">
-      <i class="fab fa-twitter"></i></a>
-    <a href="https://github.com/naniwanoshikin/shikichanpower.github.io/blob/master/index.html">
-      <span class="faa-parent">
-        <i class="fab fa-github" fa-2x faa-ring></i>
-      </span>
-    </a>
+    <ul class="sns">
+      <li>
+        <!-- github -->
+        <a href="https://github.com/naniwanoshikin/shikichanpower.github.io/blob/master/index.html" target="_blank">
+          <span class="faa-parent animated-hover">
+            <i class="fab fa-github fa-lg faa-ring"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <!-- twitter -->
+        <a class="share" href="https://twitter.com/intent/tweet?text=学習方法で困っている方々必見&url=https://dotinstall.com/lessons&related=@power_of_shikin" target="_blank" rel="nofollow">
+          <span class="faa-parent animated-hover">           
+            <i class="fab fa-twitter fa-lg faa-ring"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <!-- youtube -->
+        <a href="https://www.youtube.com/channel/UCyydUwy-0x2Tc-FcCWBQncw?view_as=subscriber">
+          <span class="faa-parent animated-hover">
+            <i class="fab fa-youtube fa-lg faa-ring"></i>
+          </span>
+        </a>
+      </li>
+      </ul>
   </footer>
 
 
 
-
-<!-- 英語版表記 -->
-  <script src="english.js"></script>
-<!-- モーダル機能 -->
+  <!-- scrollReveal機能 -->
+  <script src="scroll.js"></script>
+  <!-- モーダル機能 -->
   <script src="modal.js"></script>
-<!-- アニメーション -->
+  <!-- アニメーション -->
   <script src="jQuery.js"></script>
-<!-- 年齢 -->
+  <!-- 英語版表記 -->
+  <script src="english.js"></script>
+  <!-- 年齢 -->
   <script src="age.js"></script>
-
-
+  <!-- chart.js読み込み -->
+  <script src="chart.js"></script>
 
 
 
