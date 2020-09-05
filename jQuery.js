@@ -22,7 +22,6 @@ $(function() {
   // $('aside').slideDown(1500); // 元々非表示にしておく
 
 
-
 // header
 
 // h1大きさ
