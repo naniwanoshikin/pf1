@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="styles.css">
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Bootstrap CSS
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
   <!-- scroll Reveall -->
   <script src="https://unpkg.com/scrollreveal"></script>
   <!-- font-awesome -->
@@ -128,7 +128,7 @@
           </div>
           <div class="back">
             <!-- スキルセット -->
-            <h2 id="skill">スキル</h2>
+            <h2 class="skill" id="skill">スキル</h2>
             <!-- グラフ -->
             <div class="chart">
               <!-- ここの幅は比率。その為、divで囲った。 -->
@@ -140,7 +140,6 @@
             <ul class="script">
               <li>フレームワーク・・・Bootstrap</li>
               <li>ツール・・・Git, docker</li>
-              <li>OS・・・</li>
               <li>その他・・・Lightroom、Fresco</li>
             </ul>
             <!-- <script src="todolist.js"></script> -->
@@ -163,7 +162,7 @@
           <div class="tex">
             <h2>
               <a id="cafe" href="cafe/cafe.html" target="_blank">カフェ</a>
-              <!-- ハートのアイコン -->
+              <!-- いいねボタン -->
               <label class="like">
                 <input type="checkbox">
                 <i class="material-icons heart">favorite</i>
@@ -204,7 +203,7 @@
 
     
     <!-- 地元紹介 -->
-    <section class="cities">
+    <section class="city">
       <h1 id="town">地域紹介</h1>
       <ul class="slides">
         <li class="slide active">
@@ -252,12 +251,12 @@
 
 
     <!-- お問い合わせ -->
-    <section class="question">
+    <section class="contact">
       <h1 id="contact">
         <span class="faa-parent animated-hover"><i class="fas fa-envelope fa-sm faa-ring"></i></span>
         お問い合わせ
       </h1>
-      <p id="free">どうぞお気軽にご連絡ください。</p>
+      <p class="free" id="free">どうぞお気軽にご連絡ください。</p>
       <!-- フォーム -->
       <form action="osaka.php" method="post" class="form">
         <div class="info">
