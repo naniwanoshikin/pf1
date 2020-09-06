@@ -2,19 +2,15 @@
 /* small screen */
 
 /* javaScript 英語書き換え用 */
-.jshello {
+.js-nav {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.js-hello {
   color: palegoldenrod;
   // font-style: italic;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 30px;
   letter-spacing: 0.1em;
-}
-.jsnav {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.jslink {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 30px;
 }
 
 
@@ -24,13 +20,32 @@ body {
   color: #333;
   margin:0;
 }
+// リンクのホバー色
+@mixin acolor {
+  color: #fff;
+  &:hover {
+    color: rgb(78, 190, 235);
+  }
+}
 a {
   text-decoration: none;
+}
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+h2 {
+  font-size: 25px;
+  text-align: center;
+
+}
+ul {
+  list-style: none;
+  // list-style-type: circle;
 }
 
 /* ヘッダー */
 header {
-  /* 両端の設置 */
   background-color: rgba(34, 49, 52, 1);
   display: flex;
   height: 60px;
@@ -45,80 +60,19 @@ header {
   z-index: 10;
   h1 {
     font-size: 18px; // 20px以上だとスマホ画面で詰まる
-    font-weight: normal;
     letter-spacing: 0.3em;
     /* padding-left: 5%; h1がはみ出るバグ */
-    color: white;
     margin: 0;
     cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    &:hover {
-      color: #0bd;
-    }
+    @include acolor; 
   }
   p {
     margin: 0;
     padding: 0;
   }
 }
-
-// ナビ
-nav {
-  ul {
-    display: none;
-    list-style: none;
-    padding: 0 20px;
-    padding-left: 0;
-    margin: 0;
-    background: rgba(34, 49, 52, 1);
-    border-radius: 0 0 20px 20px;
-  }
-  li {
-    margin-left: 15px;
-    /* font-size: 15px; */
-    /* line-height: 3; */
-  }
-  a {
-    color: #fff;
-    &:hover {
-      color: #0bd;
-    }
-  }
-  .menubtn {
-    /* background: green; */
-    color: white;
-    font-size: 25px;
-    text-align: right;
-  }
-}
-
-
-/* フッター */
-footer {
-  padding:30px 0;
-  background: #323135;
-  color: #98969c;
-  text-align: center;
-  a {
-    display: block;
-    color: #fff;
-    &:hover {
-      color: rgb(78, 190, 235);
-    }
-  }
-  /* SNS */
-  .sns {
-    list-style: none;
-    display: flex;
-    margin: 0 20px;
-    float: right;
-    li {
-      padding-right: 10px;
-    }
-  }
-}
-
-
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* メイン */
 main {
   font-size: 20px;
@@ -136,8 +90,6 @@ section h1 {
   font-size:32px;
   text-decoration: underline;
   letter-spacing: 0.2em;
-  text-align: center;
-  font-weight: normal;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 section > p {
@@ -146,7 +98,57 @@ section > p {
   margin-bottom: 40px;
 }
 
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// ナビ
+nav {
+  ul {
+    display: none;
+    padding: 0 20px;
+    padding-left: 0;
+    margin: 0;
+    background: rgba(34, 49, 52, 1);
+    border-radius: 0 0 20px 20px;
+  }
+  li {
+    margin-left: 15px;
+    /* font-size: 15px; */
+    /* line-height: 3; */
+  }
+  a {
+    @include acolor;   
+  }
+  .menubtn {
+    /* background: green; */
+    color: white;
+    font-size: 25px;
+    text-align: right;
+  }
+}
 
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* フッター */
+footer {
+  padding:30px 0;
+  background: #323135;
+  color: #98969c;
+  text-align: center;
+  a {
+    display: block;
+    @include acolor;  
+  }
+  /* SNS */
+  .sns {
+    display: flex;
+    margin: 0 20px;
+    float: right;
+    li {
+      padding-right: 10px;
+    }
+  }
+}
+
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* Hello World */
 .helloworld {
   margin-top: 60px;
@@ -163,22 +165,21 @@ section > p {
     margin: 0;
   }
   ul {
-    list-style: none;
     padding: 0;
   }
   button {
     float: right;
+    margin-left: 3px;
   }
 }
 
-
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* 自己紹介 */
 .about {
   margin: 20px auto;
   border-radius: 40px;
   justify-content: space-between;
   h2 {
-    text-align: center;
     margin: 30px 10% 10px;
     border-bottom: 2px solid rgb(178, 223, 15);
   }
@@ -188,16 +189,18 @@ section > p {
       margin: 0;
     }
       /* 顔 */
-    .icon > img{
-      text-align: center;
-      height: 220px;
-      width: 220px;
-      display: block;
-      margin: 0 auto;
-      border-radius: 50%;
-      // box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
+    .icon {
+      height: 200px;
+      img {
+        text-align: center;
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        // box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
+      }
     }
-    // 
+    // 年表 
     table {
       margin: 0 auto;
       border-collapse: collapse; //１重線
@@ -222,20 +225,14 @@ section > p {
     }
     // スキル
     .script {
-      margin-left: 10px;
+      margin-left: 30px;
       li {
         cursor: pointer;
         .done {
-          /* list-style-type: circle; */
           text-decoration: line-through;
         }
       }
     }
-  }
-    
-  // プロフィールのみ
-  #profile {
-    margin-top: 0px;
   }
   
   /* 年表ボタン */
@@ -284,7 +281,6 @@ section > p {
     width: 300px;
     padding: 20px;
     border-radius: 4px;
-    
     position: absolute;
     top: 140px;
     left: 0;
@@ -303,13 +299,14 @@ section > p {
     transform: translate(0, -1000px);
   }
 }
-  
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* 特徴 */
 .features {
   border-radius: 50px;
   margin: 20px auto;
   
-  .container {
+  .featlist {
     margin: 0 20px;
     text-align: center;
     img {
@@ -318,11 +315,9 @@ section > p {
       vertical-align: bottom;
     }
     .tex {
-      h2 a {
+      a {
+        @include acolor;  
         color: #e0ce68;
-        &:hover {
-          color: #0bd;
-        }
       }
       p {
       padding-bottom: 64px;
@@ -333,7 +328,7 @@ section > p {
   }
 }
 
-
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* 地元紹介 */
 .city {
   background: #f2f2f3;
@@ -341,11 +336,9 @@ section > p {
   border-radius: 30px;
   /* ul */
   .slides {
-    list-style-type: none;
     padding: 0;
     .active {
       display: block;
-      padding:0;
       margin: 0;
     }
     li {
@@ -360,10 +353,7 @@ section > p {
       /* 説明 */
       .tex {
         padding-bottom: 0px;
-        padding: 0 20px;
-      }
-      h2 {
-        font-size: 20px;
+        padding: 0 30px;
       }
       p {
         text-align: left;
@@ -396,11 +386,11 @@ section > p {
       text-align: center;
       .hide {
         display: inline-block;
-        color: #4e90af;
-        background-color: #e0f5ff;
         padding: 6px 12px;
         border-radius: 50%;
         cursor: pointer;
+        color: #4e90af;
+        background-color: #e0f5ff;
         &:hover {
           color: #fff;
           background-color: #5cabd0;
@@ -410,7 +400,7 @@ section > p {
   }
 }
 
-
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* お問い合わせフォーム */
 .contact {
   padding: 10px 20px 30px;
@@ -419,9 +409,6 @@ section > p {
   text-align: center;
   h1 {
     margin-bottom: 0;
-  }
-  .free {
-    text-align: center;
   }
   /* テキスト入力 */
   .textline {
@@ -432,8 +419,13 @@ section > p {
   .profession {
     display: inline;
     border-radius: 14px;
+    text-align: left;
   }
   /* 年齢 */
+  .age {
+    text-align: left;
+    padding-left: 50px;
+  }
   .textage {
     padding: 5px;
     border-radius: 8px;
@@ -541,7 +533,7 @@ section > p {
   }
   // 地域紹介
   .city {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
   }
   /* お問い合わせ */
@@ -556,7 +548,7 @@ section > p {
   .menubtn {
     display: none;
   }
-  .acord {
+  .navlist {
     display: block;
     display: flex;
   }
