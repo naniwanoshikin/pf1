@@ -1,6 +1,5 @@
 'use strict'; {
-
-// Englishボタンをクリックすると、、、
+// Englishボタンでテキスト書き換え
 document.querySelector('.english').addEventListener('click', () => {
 
   // id取得、定義
@@ -15,7 +14,6 @@ document.querySelector('.english').addEventListener('click', () => {
   const contactNode = document.getElementById('contact');
   const wellNode = document.getElementById('wellcome');
   const vaniNode = document.getElementById('vani'); // jQ
-  const advNode = document.getElementById('adv');
   const profNode = document.getElementById('profile');
   const openNode = document.getElementById('open'); // 年表
   const skillNode = document.getElementById('skill');
@@ -32,7 +30,6 @@ document.querySelector('.english').addEventListener('click', () => {
   nav4Node.textContent = 'CONTACT';
   wellNode.textContent = 'Welcome to my Portfolio!';
   vaniNode.textContent = 'English World!'; // jQ
-  advNode.textContent = 'ADVERTISE';
   aboutNode.textContent = 'ABOUT';
   profNode.textContent = 'PROFILE';
   openNode.textContent = 'For Details';
@@ -52,38 +49,23 @@ document.querySelector('.english').addEventListener('click', () => {
   // classNameだと、既存のclass属性が書き換えられてしまう。
   // installNode.className = 'name';
   // classListを使うと、class属性を追加。こちらの方が便利。
-  nav1Node.classList.add('jsnav');
-  nav2Node.classList.add('jsnav');
-  nav3Node.classList.add('jsnav');
-  nav4Node.classList.add('jsnav');
-  wellNode.classList.add('jshello');
-  memNode.classList.add('jslink');
-  cafeNode.classList.add('jslink');
-  quizNode.classList.add('jslink');
+  wellNode.classList.add('js-hello');
+  memNode.classList.add('js-hello');
+  cafeNode.classList.add('js-hello');
+  quizNode.classList.add('js-hello');
   //クラスをつけたり除いたりを繰り返す機能。
   // wellNode.classList.toggle('name');
   //data-translation属性という独自の属性を定義。
   // installNode.textContent = nameNode.dataset.translation;
 
-}); // クリック終了
+}); // Englishボタン終了
 
-// Indexボタンをクリックすると、、
+// Countボタンをクリック
 document.querySelector('.pindex').addEventListener('click', () => {
   document.querySelectorAll('p').forEach((p, index) => {
-    p.textContent = `Part.${index}`; // p要素の書き換え
+    p.textContent = `P.${index}`; // p要素を書き換え
   });
 });
-
-
-// 自動切り替え（クリックなし）
-// function update() {
-//   id属性がついていないセレクタ→querySelector
-//   最初の1つを取得
-//   document.querySelector('h2').textContent = '式っち!';
-//   指定したh2要素
-//   document.querySelectorAll('h2')[1].textContent = '式っち!';
-// }
-// setTimeout(update, 1000);
 
 
 
