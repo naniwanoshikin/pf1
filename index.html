@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="styles.css">
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Bootstrap CSS
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
   <!-- scroll Reveall -->
   <script src="https://unpkg.com/scrollreveal"></script>
   <!-- font-awesome -->
@@ -34,7 +34,7 @@
     <h1 id="install" class="text-center bg-primary">しきっちワールド</h1>
     <nav class="nav">
       <p class="menubtn"><i class="far fa-caret-square-down"></i></p>
-      <ul class="acord">
+      <ul class="navlist">
         <li><a href="#about" id="nav1" data-all="pro">自己紹介</a></li>
         <li><a href="#feat" id="nav2">特徴</a></li>
         <li><a href="#town" id="nav3">地域紹介</a></li>
@@ -47,12 +47,11 @@
   <main>
     <!-- ようこそ -->
     <section class="helloworld">
-      <button class="pindex">Index</button>
+      <button class="pindex">Count</button>
       <button class="english">English</button>
       <button class="van">Vanish</button>
       <h1 id="wellcome" data-translation="Dotinstall" title="Hello World">Hello World</h1>
     </section>
-
 
     <!-- 自己紹介 -->
     <section class="about">
@@ -64,7 +63,7 @@
               <img src="img/face.jpeg"><br>
             </div>
             <!-- プロフィール -->
-            <h2 id="profile">プロフィール</h2>
+            <h2 id="profile" class="profile">プロフィール</h2>
             <p>式谷政廣 / 1991年生まれ</p>
             <p>工学部卒（橋梁）</p>
             <!-- 詳細ボタン -->
@@ -136,14 +135,11 @@
                 Canvas not supported...
               </canvas>
             </div>
-
             <ul class="script">
               <li>フレームワーク・・・Bootstrap</li>
-              <li>ツール・・・Git, docker</li>
               <li>その他・・・Lightroom、Fresco</li>
             </ul>
             <!-- <script src="todolist.js"></script> -->
-            
           </div>
         </div>
     </section>
@@ -152,10 +148,8 @@
     <!-- 特徴的 -->
     <section class="features">
       <h1 id="feat">特徴</h1>
-      <div class="container">
-
-        <!-- １枚目 -->
-        <section>
+      <div class="featlist">
+        <section> <!-- １枚目 -->
           <div class="pic">
             <img src="cafe/img/cafe1.jpg">
           </div>
@@ -172,9 +166,7 @@
             <p>カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！</p>
           </div>
         </section>
-
-        <!-- ２枚目 -->
-        <section>
+        <section>  <!-- ２枚目 -->
           <div class="pic">
             <img src="img/aich11.jpg" alt="">
           </div>
@@ -185,9 +177,7 @@
             <p>こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！</p>
           </div>
         </section>
-
-        <!-- ３枚目 -->
-        <section>
+        <section>  <!-- ３枚目 -->
           <div class="pic">
             <img src="img/aich15.jpg" alt="">
           </div>
@@ -269,14 +259,14 @@
           <p><label>Email（必須）<input class="textline" type="text" placeholder="osaka@gmail.com"></label></p>
 
           <!-- 年齢 -->
-            <label for="age">年齢</label>
+            <p class="age"><label for="age">年齢</label>
             <select class="textage" id="age" name="age">
               <!-- <select name="age" id="age" size="4" multiple> -->
                 <!-- <option value="" selected>1</option>
                   <option value="">2</option>
                   <option value="">3</option>
                   <option value="">4</option> -->
-            </select>
+            </select></p>
                 
           <!-- 連絡方法 -->
           <p><fieldset class="profession">
@@ -301,7 +291,7 @@
   
   <!-- フッター -->
   <footer>
-    <a href="#top">© shikitti.Portfolio.2020 </a>
+    <a href="#top">© shikitti-Portfolio.2020 </a>
     <ul class="sns">
       <li><!-- github -->
         <a href="https://github.com/naniwanoshikin/shikichanpower.github.io/blob/master/index.html" target="_blank">
