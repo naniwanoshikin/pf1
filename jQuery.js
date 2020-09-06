@@ -1,5 +1,7 @@
 $(function() {
 
+  // jQuery
+
   // $('p').css('color', 'red').css('background', 'skyblue').hide(7500); // メソッドチェーン
   // $('p').addClass('style'); //クラスつける
   // $('p').text('change'); // 文字列を書き換える
@@ -20,6 +22,23 @@ $(function() {
     // alert('okkkkkkkkk!');  // アラート表示
   // });
   // $('aside').slideDown(1500); // 元々非表示にしておく
+
+  // english.js
+
+// function update() { // 自動切り替え（クリックなし）
+//   id属性がついていないセレクタ→querySelector
+//   最初の1つを取得
+//   document.querySelector('h2').textContent = '式っち!';
+//   指定したh2要素
+//   document.querySelectorAll('h2')[1].textContent = '式っち!';
+// }
+// setTimeout(update, 1000);
+
+
+//   gitの状態
+// １、作業ディレクトリ（ファイルの作成、編集）
+// ２、ステージングエリア（インデックス）を経由して、
+// ３、リポジトリに保存（ローカル or リモート）
 
 
 // header
@@ -43,25 +62,25 @@ $('#install').click(function() {
     350); //速さ
 });
 
-// ナビゲーション
+// ナビスクロール
 $('header a').click(function() {
-  var id = $(this).attr('href'); //各id取得
-  var position = $(id).offset().top; //高さ取得
+  var id = $(this).attr('href'); // 各id取得
+  var position = $(id).offset().top; // 高さ取得
   $('html,body').animate({ 
-    'scrollTop': position - 100 //その高さへ
+    'scrollTop': position - 100 // その高さへ
   }, 'fast');
 });
 // ドロップダウンメニュー
-$('.menubtn').click(function() {
-  var $answer = $('nav').find('.acord'); //nav直下のacordクラス
-  if($answer.hasClass('open')) { //openしていたら、
-    $answer.removeClass('open');
-    $answer.slideUp(); //隠す
-    // $('nav').find('.menubtn').text('+'); //タグの中身書き換え
-  } else {
-    $answer.addClass('open'); 
-    $answer.slideDown(); //表示    
-    // $('nav').find('.menubtn').text('-'); //中身書き換え    
+$('.menubtn').click(function() { // クリックしたとき、
+  var $answer = $('nav').find('ul'); // nav直下のulが
+  if($answer.hasClass('open')) { // openしていたら、
+    $answer.removeClass('open'); // openやめて
+    $answer.slideUp(); // 隠す
+    // $('nav').find('.menubtn').text('++'); // 書き換え
+  } else { // openしていなかったら、
+    $answer.addClass('open'); // openする 
+    $answer.slideDown(); // 表示
+    // $('nav').find('.menubtn').text('--'); // 書き換え    
   }
 });
 
@@ -78,13 +97,11 @@ $('body').on('click', '.vanish', function() { //clickするとvanishする機能
   $(this).remove(); //削除
 });
 
-
 // 取り消し線
 $('.script > li').click(
   function() {
   $(this).css('text-decoration', 'line-through');
 });
-
 
 // 地域紹介
 //◀️▶️ボタン表示の状態について定義（下記1, 2に適用）
@@ -123,11 +140,7 @@ $('.change').click(function() {
 });
 
 
-
-
-
-
-// フォーム
+// コンタクトフォーム
 $('#age')
 .focus(function() { //クリックした時
   $(this).css('color', 'green');
@@ -139,7 +152,6 @@ $('#age')
   alert('年齢を入力しました');
 });
 
-
 // SNSアイコン
 // $('.animated-hover').hover( //マウスが
 //   function() {
@@ -148,8 +160,5 @@ $('#age')
 //   $(this).animate({'font-size': '16px'}, 300); //のっていない
 //   }
 // );
-
-
-
 
 });
