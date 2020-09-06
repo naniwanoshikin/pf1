@@ -1,14 +1,9 @@
 @charset "utf-8";
 /* small screen */
 
-/* javaScript 英語書き換え用 */
-.js-nav {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+/* javaScript helloworld書き換え用 */
 .js-hello {
   color: palegoldenrod;
-  // font-style: italic;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 30px;
   letter-spacing: 0.1em;
 }
@@ -33,11 +28,12 @@ a {
 h1 {
   font-weight: normal;
   text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  // font-style: italic;
 }
 h2 {
   font-size: 25px;
   text-align: center;
-
 }
 ul {
   list-style: none;
@@ -50,8 +46,7 @@ header {
   display: flex;
   height: 60px;
   line-height: 60px;
-  /* 余白を等間隔で作る */
-  justify-content: space-between;
+  justify-content: space-between; // 余白を等間隔で作る
   box-sizing: border-box;
   padding: 0 4%;
   width: 100%;
@@ -64,7 +59,6 @@ header {
     /* padding-left: 5%; h1がはみ出るバグ */
     margin: 0;
     cursor: pointer;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     @include acolor; 
   }
   p {
@@ -84,13 +78,11 @@ main > section {
   background-color: hsla(80, 80%, 20%, 0.5);
   padding-top: 5px;
   padding-bottom: 50px;
-  
 }
 section h1 {
   font-size:32px;
   text-decoration: underline;
   letter-spacing: 0.2em;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 section > p {
   text-align: center;
@@ -108,6 +100,7 @@ nav {
     margin: 0;
     background: rgba(34, 49, 52, 1);
     border-radius: 0 0 20px 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   li {
     margin-left: 15px;
@@ -196,7 +189,6 @@ footer {
         display: block;
         margin: 0 auto;
         border-radius: 50%;
-        // box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
       }
     }
     // 年表 
@@ -213,16 +205,16 @@ footer {
 
   .back {
     margin: 0 auto;
+    // チャート
     .chart {
       width: 70%;
       background: #aacebb;
       border-radius: 20%;
       padding: 20px;
-      // max-width: 400px;
-      margin: 0 auto;
-      // text-align: center;が使えない、、
+      margin: 30px auto; // text-align: center;が使えず、、
+      box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
     }
-    // スキル
+    // スキルその他
     .script {
       margin-left: 30px;
       li {
