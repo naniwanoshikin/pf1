@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+
   var type = 'radar';
   // 値
   var data = {
@@ -12,7 +13,8 @@
       borderWidth: 1,
       // fill: false,
       // lineTension: 0,
-      pointStyle: 'rect',
+      // pointStyle: 'rect',
+      pointRadius: 0,
     }, 
     {
       label: '@2021.9(est.)',
@@ -20,7 +22,8 @@
       backgroundColor: 'rgba(0, 0, 255, 0.1)',
       borderColor: 'blue',
       borderWidth: 1,
-      pointStyle: 'triangle',
+      // pointStyle: 'triangle',
+      pointRadius: 0,
     }
   ]
   };
@@ -63,7 +66,6 @@
     // maintainAspectRatio: false, // （理解できん、、
   };
   var ctx = document.getElementById('my_chart').getContext('2d');
-
 
   var myChart = new Chart(ctx, {
     type: type,
