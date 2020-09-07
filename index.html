@@ -25,6 +25,12 @@
   <!-- chart.jsのCDN読み込み -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
   </script>
+  <!-- react本体 -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <!-- reactの結果をDOMに反映するライブラリ -->
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <!-- JSXを使うためのBabelライブラリ -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 
 
@@ -52,103 +58,103 @@
       <button class="pindex">Count</button>
       <button class="english">English</button>
       <button class="van">Vanish</button>
-      <h1 id="wellcome" data-translation="Dotinstall" title="Hello World">Hello World</h1>
+      <h1 id="wellcome" data-translation="Dotinstall">Hello World</h1>
     </section>
 
     <!-- 自己紹介 -->
     <section class="about">
       <h1 id="about">自己紹介</h1>
-        <div class="frontback">
-          <div class="front">
-            <!-- 顔 -->
-            <div class="icon">
-              <img src="img/face.jpeg"><br>
-            </div>
-            <!-- プロフィール -->
-            <h2 id="profile" class="profile">プロフィール</h2>
-            <p>式谷政廣 / 1991年生まれ</p>
-            <p>工学部卒（橋梁）</p>
-            <!-- 詳細ボタン -->
-            <div class="btn" id="open">年表ボタン</div>
-            <!-- マスク -->
-            <div id="mask" class="hidden"></div>
-            <!-- モーダルウィンドウ -->
-            <section id="modal" class="hidden">
-              <p>年表</p>
-              <!-- テーブル -->
-              <table border="1" width="" cellpadding="8" class="" bordercolor="#333333">
-                <thead>
-                  <tr bgcolor="ffe0b6">
-                    <th>年</th>
-                    <th colspan="2">できごと</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1991</td>
-                    <td>誕生</td>
-                    <td>OsakaCity</td>
-                    <tr>
-                    <td>2006</td>
-                    <td>高校</td>
-                    <td>将棋してました</td>
-                    <tr>
-                    <td>2009</td>
-                    <td>趣味</td>
-                    <td>空手始めました</td>
-                    <tr>
-                    <td>2012</td>
-                    <td>研究</td>
-                    <td>柱の地震解析</td>
-                    <tr>
-                    <td>2016</td>
-                    <td>業務</td>
-                    <td>自動車部品の設計検討</td>
-                    <tr>
-                    <td>2017</td>
-                    <td>哲学</td>
-                    <td>パルクール始めました</td>
-                    <tr>
-                    <td>2020</td>
-                    <td>転活</td>
-                    <td><font color="#ed1c24">プログラミング開始</font></td>
-                  </tr>                
-                </tbody>
-              </table>
-              <!-- <div class="btn" id="close">閉じる</div> -->
-            </section>
-
-            <h2 id="hobby">趣味</h2>
-            <ul class="hobby">
-              <p>パルクール
-                <!-- instagram -->
-                <a href="http://instagram.com/shikitch_pk">
-                  <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
-                </a>、写真、将棋</p>
-            </ul>
+      <p>自己紹介をします。</p>
+      <div class="frontback">
+        <div class="front">
+          <!-- 顔 -->
+          <div class="icon">
+            <img src="img/face.jpeg"><br>
           </div>
-          <div class="back">
-            <!-- スキルセット -->
-            <h2 class="skill" id="skill">スキル</h2>
-            <!-- グラフ -->
-            <div class="chart">
-              <!-- ここの幅は比率。その為、divで囲った。 -->
-              <canvas id="my_chart" width="10" height="10">
-                Canvas not supported...
-              </canvas>
-            </div>
-            <ul class="script">
-              <li>その他・・・Lightroom、Fresco</li>
-            </ul>
-            <!-- <script src="todolist.js"></script> -->
+          <!-- プロフィール -->
+          <h2 id="profile" class="profile">プロフィール</h2>
+          <p>しきっち / 1991年生まれ</p>
+          <p>工学部卒（橋梁）</p>
+          <!-- 詳細ボタン -->
+          <div class="btn" id="open">年表ボタン</div>
+          <!-- マスク -->
+          <div id="mask" class="hidden"></div>
+          <!-- モーダルウィンドウ -->
+          <section id="modal" class="hidden">
+            <p>年表</p>
+            <!-- テーブル -->
+            <table border="1" width="" cellpadding="8" class="" bordercolor="#333333">
+              <thead>
+                <tr bgcolor="ffe0b6">
+                  <th>年</th>
+                  <th colspan="2">できごと</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1991</td>
+                  <td>誕生</td>
+                  <td>OsakaCity</td>
+                  <tr>
+                  <td>2006</td>
+                  <td>高校</td>
+                  <td>将棋してました</td>
+                  <tr>
+                  <td>2009</td>
+                  <td>趣味</td>
+                  <td>空手始めました</td>
+                  <tr>
+                  <td>2012</td>
+                  <td>研究</td>
+                  <td>柱の地震解析</td>
+                  <tr>
+                  <td>2016</td>
+                  <td>業務</td>
+                  <td>自動車部品の設計検討</td>
+                  <tr>
+                  <td>2017</td>
+                  <td>哲学</td>
+                  <td>パルクール始めました</td>
+                  <tr>
+                  <td>2020</td>
+                  <td>転活</td>
+                  <td><font color="#ed1c24">プログラミング開始</font></td>
+                </tr>                
+              </tbody>
+            </table>
+            <!-- <div class="btn" id="close">閉じる</div> -->
+          </section>
+          <!-- 趣味 -->
+          <h2 id="hobby">趣味</h2>
+          <div class="hobby">
+            <p>パルクール<a href="http://instagram.com/shikitch_pk">
+              <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
+              </a>、写真、将棋</p>
           </div>
         </div>
+        <!-- スキル一覧 -->
+        <div class="back">
+          <h2 class="skill" id="skill">スキル</h2>
+          <!-- グラフ -->
+          <div class="chart" title="React、PHPはまだ学習中です">
+            <!-- ここの幅は比率。その為、divで囲った。 -->
+            <canvas id="my_chart" width="1" height="1">
+              Canvas not supported...
+            </canvas>
+          </div>
+          <ul class="script">
+            <li>その他・・・Lightroom、Fresco</li>
+          </ul>
+          <!-- <script src="todolist.js"></script> -->
+        </div>
+      </div>
     </section>
     
 
-    <!-- 特徴的 -->
-    <section class="features">
+    <!-- 特徴 -->
+    <section class="feature">
       <h1 id="feat">特徴</h1>
+      <p>クリックしてご覧下さい。</p>
       <div class="featlist">
         <section> <!-- １枚目 -->
           <div class="pic">
@@ -196,6 +202,7 @@
     <!-- 地元紹介 -->
     <section class="city">
       <h1 id="town">地域紹介</h1>
+      <p>クリックしてご覧下さい。</p>
       <ul class="slides">
         <li class="slide active">
           <img src="img/aich1.jpg" alt="">
@@ -231,12 +238,13 @@
         <div class="change next">▶️</div>
         <!-- 番号 -->
         <div class="hide-wrapper">
-          <div class="hide" id="hide1">1</div>
-          <div class="hide" id="hide2">2</div>
-          <div class="hide" id="hide3">3</div>
-          <div class="hide" id="hide4">4</div>
+          <div class="hide" id="">1</div>
+          <div class="hide" id="">2</div>
+          <div class="hide" id="">3</div>
+          <div class="hide" id="">4</div>
         </div>
       </div>
+      <div id="root"></div>
       <!-- <script src="todolist.js"></script> -->
     </section>
 
@@ -247,7 +255,7 @@
         <span class="faa-parent animated-hover"><i class="fas fa-envelope fa-sm faa-ring"></i></span>
         お問い合わせ
       </h1>
-      <p class="free" id="free">どうぞお気軽にご連絡ください。</p>
+      <p class="free" id="free">お気軽にご連絡下さい。</p>
       <!-- フォーム -->
       <form action="osaka.php" method="post" class="form">
         <div class="info">
@@ -331,12 +339,147 @@
   <script src="age.js"></script>
   <!-- chart.js読み込み -->
   <script src="chart.js"></script>
+  <!-- react babel 読み込み -->
+  <script type="text/babel">
+  (() => { // 即時関数
+
+  // // カウントアップ機能
+  // function countUp(e, color) {
+  //   e.preventDefault(); // 画面のa遷移を防ぐ
+  //   alert(color);
+  // }
+  // Conponent 関数
+  // function Counter(props) {
+  //   // propsは読み取り専用の為、更新不可
+  //   return (
+  //   <li style={{backgroundColor:this.props.color}}>
+  //     <a href="#" onClick={e => countUp(e, props.color)}>
+  //       0
+  //     </a>
+  //   </li>
+  //   );
+  // }
+  // Conponent class ＝Counterが親要素
+  // class Counter extends React.Component {
+  //   constructor(props) {
+  //     super(props); // 親クラスのコンストラクタ
+  //     this.state = { // ①stateの定義。オブジェクト部
+  //       count: 0 // 初期値
+  //     };
+  //     this.countUp = this.countUp.bind(this); // エラーをbindで処理する
+  //   }
+  //   // カウントアップ機能
+  //   countUp() {
+  //     this.setState(prevState => { // 値をsetするときはsetStateとかく
+  //       return { // prevStateで変更前の値を取得する
+  //         count: prevState.count + 1
+  //       };
+  //     }); // setStateするたびにrendarが呼ばれ、新しい値でUIが再描画される
+  //   }
+  //   // 記述部分
+  //   render() {
+  //     return (
+  //      <li style={{backgroundColor:this.props.color}} onClick={this.countUp}>
+  //        {this.state.count}
+  //      </li>
+  //     );
+  //   }
+  // }
+
+  // <Counter counter={this.state.counters[0]}/>
+  // <Counter counter={this.state.counters[1]}/>
+  // <Counter counter={this.state.counters[2]}/>
+
+
+
+
+
+
+
+
+  // 表記方法
+  function Counter(props) {
+    return(
+      <li style={{backgroundColor:props.counter.color}} onClick={() => props.countUp(props.counter)}>
+        {props.counter.id}:{props.counter.count}
+      </li>
+    );
+  }
+
+  function CounterList(props) {
+    const counters = props.counters.map(counter => {
+      return(
+        <Counter
+         counter={counter}
+         key={counter.id}
+         countUp={props.countUp}
+        />
+      );
+    }); 
+    return (
+      <ul>
+        {counters}
+      </ul>
+    );
+  }
+
+  // JS部分
+  // Counterの情報を管理
+  class App extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        counters: [ // オブジェクトとして定義
+          {id: '①', count: 0, color: 'tomato'},
+          {id: '②', count: 0, color: 'skyblue'},
+          {id: '③', count: 0, color: 'limegreen'},
+          {id: '④', count: 0, color: 'yellow'},
+        ],
+        total: 0
+      };
+      this.countUp = this.countUp.bind(this); // thisがundefinedとならない様に
+    }
+    // カウントアップ機能
+    countUp(counter) {
+      this.setState(prevState => { // 値をsetするときはsetStateとかく
+        const counters = prevState.counters.map(counter => {
+          return {id: counter.id, count: counter.count, color: counter.color};
+        });
+        const pos = counters.map(counter => {
+          return counter.id;
+        }).indexOf(counter.id); // counterのidを持つデータの何番目か
+        counters[pos].count++; // pos番目のcountを1増やす
+        return {
+          counters: counters,
+          total: prevState.total + 1
+        };
+      }); // setStateするたびにrendarが呼ばれ、新しい値でUIが再描画される
+    }
+
+    render() {
+      // JSX記述部分
+      return ( // 渡せる要素は１つだけ。{}内がJSです。
+      <div className="reactcont">          
+          <div>計{this.state.total}{name.toUpperCase()}</div>
+          <CounterList
+            countUp={this.countUp}
+            counters={this.state.counters}
+          />          
+        </div>
+      );
+    }
+  }
+
+  const name = 'クリック'; // 定義
+
+  ReactDOM.render( // JS内
+  <App/>, // コンポーネントクラス
+    document.getElementById('root')
+  );
+
+  })();
+  </script>
   
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.full.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
 
 </body>
 </html>
