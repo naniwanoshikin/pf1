@@ -1,5 +1,4 @@
 'use strict'; {
-
   // 動き設定
 
   // タイトル
@@ -48,15 +47,12 @@
     document.querySelector('#wellcome'),
     document.querySelector('#about'),
     document.querySelector('#feat'),
-    document.querySelector('#town'),
-    document.querySelector('#contact')
+    document.querySelector('#root')
   ];
 
   // 実行（対象、設定名）
   ScrollReveal().reveal(node1, node);
   ScrollReveal().reveal(nodeList1, imgSlide);
   ScrollReveal().reveal(nodeArray1, slideUp);
-
-
 
 }
