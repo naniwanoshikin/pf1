@@ -257,45 +257,47 @@
       </h1>
       <p class="free" id="free">お気軽にご連絡下さい。</p>
       <!-- フォーム -->
-      <form action="osaka.php" method="post" class="form">
-        <div class="info">
-          <!-- お名前 -->
-          <label>お名前（必須）<input class="textline" type="text" placeholder="大阪太郎" name="username"></label>
-          <br>
-          <!-- <input type="password" value="hai"> -->
+      <form action="osaka.php" method="post">
+        <div class="form">
+          <div class="frontform">
+            <!-- お名前 -->
+            <label>お名前（必須）<input class="textline" type="text" placeholder="大阪太郎" name="username"></label>
+            <br>
+            <!-- <input type="password" value="hai"> -->
 
-          <!-- Email -->
-          <p><label>Email（必須）<input class="textline" type="text" placeholder="osaka@gmail.com"></label></p>
+            <!-- Email -->
+            <p><label>Email（必須）<input class="textline" type="text" placeholder="osaka@gmail.com"></label></p>
 
-          <!-- 年齢 -->
-            <p class="age"><label for="age">年齢</label>
-            <select class="textage" id="age" name="age">
-              <!-- <select name="age" id="age" size="4" multiple> -->
-                <!-- <option value="" selected>1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option> -->
-            </select></p>
-                
-          <!-- 連絡方法 -->
-          <p><fieldset class="profession">
-              <legend>ご希望の連絡方法</legend>
-              <label><input type="radio" name="profession" checked>メール</label>
-              <label><input type="radio" name="profession">電話</label>
-              <label><input type="radio" name="profession">どちらでも可</label>
-          </fieldset></p>
+            <!-- 年齢 -->
+              <p class="age"><label for="age">年齢</label>
+              <select class="textage" id="age" name="age">
+                <!-- <select name="age" id="age" size="4" multiple> -->
+                  <!-- <option value="" selected>1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option> -->
+              </select></p>
+                  
+            <!-- 連絡方法 -->
+            <p><fieldset class="profession">
+                <legend>ご希望の連絡方法</legend>
+                <label><input type="radio" name="profession" checked>メール</label>
+                <label><input type="radio" name="profession">電話</label>
+                <label><input type="radio" name="profession">どちらでも可</label>
+            </fieldset></p>
+          </div>
+          <div class="backform">
+            <label>お問い合わせ内容（必須）
+              <p><textarea class="textline" name="" id="" cols="40" rows="10" placeholder="希望事項（1000字まで）"></textarea></p>
+            </label>
+          </div>
         </div>
-        <div>
-          <label>お問い合わせ内容（必須）
-            <p><textarea class="textline" name="" id="" cols="40" rows="10" placeholder="希望事項（1000字まで）"></textarea></p>
-          </label>
-        </div> 
+        <!-- 送信ボタン -->
+        <div class="sub">
+          <input type="submit" value="送信する" class="submit">
+        </div>
       </form>
-      <!-- 送信ボタン -->
-      <div class="sub">
-        <input type="submit" value="送信する" class="submit">
-      </div>
-    </section>        
+    </section>
   </main>
   
   <!-- フッター -->
@@ -342,60 +344,6 @@
   <!-- react babel 読み込み -->
   <script type="text/babel">
   (() => { // 即時関数
-
-  // // カウントアップ機能
-  // function countUp(e, color) {
-  //   e.preventDefault(); // 画面のa遷移を防ぐ
-  //   alert(color);
-  // }
-  // Conponent 関数
-  // function Counter(props) {
-  //   // propsは読み取り専用の為、更新不可
-  //   return (
-  //   <li style={{backgroundColor:this.props.color}}>
-  //     <a href="#" onClick={e => countUp(e, props.color)}>
-  //       0
-  //     </a>
-  //   </li>
-  //   );
-  // }
-  // Conponent class ＝Counterが親要素
-  // class Counter extends React.Component {
-  //   constructor(props) {
-  //     super(props); // 親クラスのコンストラクタ
-  //     this.state = { // ①stateの定義。オブジェクト部
-  //       count: 0 // 初期値
-  //     };
-  //     this.countUp = this.countUp.bind(this); // エラーをbindで処理する
-  //   }
-  //   // カウントアップ機能
-  //   countUp() {
-  //     this.setState(prevState => { // 値をsetするときはsetStateとかく
-  //       return { // prevStateで変更前の値を取得する
-  //         count: prevState.count + 1
-  //       };
-  //     }); // setStateするたびにrendarが呼ばれ、新しい値でUIが再描画される
-  //   }
-  //   // 記述部分
-  //   render() {
-  //     return (
-  //      <li style={{backgroundColor:this.props.color}} onClick={this.countUp}>
-  //        {this.state.count}
-  //      </li>
-  //     );
-  //   }
-  // }
-
-  // <Counter counter={this.state.counters[0]}/>
-  // <Counter counter={this.state.counters[1]}/>
-  // <Counter counter={this.state.counters[2]}/>
-
-
-
-
-
-
-
 
   // 表記方法
   function Counter(props) {
@@ -460,7 +408,7 @@
       // JSX記述部分
       return ( // 渡せる要素は１つだけ。{}内がJSです。
       <div className="reactcont">          
-          <div>計{this.state.total}{name.toUpperCase()}</div>
+          <div>{this.state.total}{name.toUpperCase()}</div>
           <CounterList
             countUp={this.countUp}
             counters={this.state.counters}
@@ -481,5 +429,53 @@
   </script>
   
 
+  
 </body>
 </html>
+
+<!-- // // カウントアップ機能
+// function countUp(e, color) {
+//   e.preventDefault(); // 画面のa遷移を防ぐ
+//   alert(color);
+// }
+// Conponent 関数
+// function Counter(props) {
+//   // propsは読み取り専用の為、更新不可
+//   return (
+//   <li style={{backgroundColor:this.props.color}}>
+//     <a href="#" onClick={e => countUp(e, props.color)}>
+//       0
+//     </a>
+//   </li>
+//   );
+// }
+// Conponent class ＝Counterが親要素
+// class Counter extends React.Component {
+//   constructor(props) {
+//     super(props); // 親クラスのコンストラクタ
+//     this.state = { // ①stateの定義。オブジェクト部
+//       count: 0 // 初期値
+//     };
+//     this.countUp = this.countUp.bind(this); // エラーをbindで処理する
+//   }
+//   // カウントアップ機能
+//   countUp() {
+//     this.setState(prevState => { // 値をsetするときはsetStateとかく
+//       return { // prevStateで変更前の値を取得する
+//         count: prevState.count + 1
+//       };
+//     }); // setStateするたびにrendarが呼ばれ、新しい値でUIが再描画される
+//   }
+//   // 記述部分
+//   render() {
+//     return (
+//      <li style={{backgroundColor:this.props.color}} onClick={this.countUp}>
+//        {this.state.count}
+//      </li>
+//     );
+//   }
+// }
+
+// <Counter counter={this.state.counters[0]}/>
+// <Counter counter={this.state.counters[1]}/>
+// <Counter counter={this.state.counters[2]}/> -->
