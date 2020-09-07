@@ -3,10 +3,10 @@
   var type = 'radar';
   // 値
   var data = {
-    labels: ['HTML CSS', 'JavaScript', 'jQuery', 'Sass', 'PHP'],
+    labels: ['HTML CSS', 'Sass', 'JScript', 'jQuery', 'React', 'PHP'],
     datasets: [{
       label: '@me',
-      data: [30, 30, 25, 20, 5],
+      data: [40, 30, 30, 30, 15, 5],
       backgroundColor: 'rgba(255, 0, 0, 0.1)',
       borderColor: 'red',
       borderWidth: 1,
@@ -15,8 +15,8 @@
       pointStyle: 'rect',
     }, 
     {
-      label: '@yoji',
-      data: [100, 100, 90, 100, 80],
+      label: '@ito',
+      data: [90, 85, 80, 80, 50, 10],
       backgroundColor: 'rgba(0, 0, 255, 0.1)',
       borderColor: 'blue',
       borderWidth: 1,
