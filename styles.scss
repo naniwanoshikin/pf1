@@ -260,18 +260,20 @@ footer {
 
   .back {
     margin: 0 auto;
+    text-align: center;
     // チャート
     .chart {
       width: 70%;
       background: #aacebb;
       border-radius: 20%;
       padding: 20px;
-      margin: 30px auto; // text-align: center;が使えず、、
+      margin: 30px auto; // text-align:が使えず
       box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
     }
     // スキルその他
     .script {
-      margin-left: 30px;
+      margin-top: 5px;
+      padding: 0 20px;
       li {
         cursor: pointer;
         .done {
