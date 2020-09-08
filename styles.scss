@@ -44,7 +44,21 @@
     }
   }
 }
-
+// 送信完了 React.js
+.submit-m {
+  color: #711dd1;
+  line-height: 15; //倍数
+  font-size: 20px;
+  background-color: rgba(48, 214, 184, 0.16);
+  border: 2px dashed #dd4b11;
+  border-radius: 15px;
+}
+.error-name, .error-content {
+  color: #ff4d75;
+  margin-top: 3px;
+  text-align: center;
+}
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // リンクのホバー色
 @mixin acolor {
   color: #fff;
@@ -645,6 +659,9 @@ footer {
     .frontform {
       margin: 0;
       padding: 0;
+    }
+    .backform p {
+      margin: 0 auto 10px;
     }
   }
 }
