@@ -8,7 +8,7 @@
     datasets: [{
       label: '@ 2020.9',
       data: [40, 30, 30, 30, 15, 5],
-      backgroundColor: 'rgba(255, 0, 0, 0.1)',
+      backgroundColor: 'rgba(255, 0, 0, 0.6)',
       borderColor: 'red',
       borderWidth: 1,
       // fill: false,
