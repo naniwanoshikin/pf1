@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var type = 'radar';
+  let type = 'radar';
   // 値
-  var data = {
+  let data = {
     labels: ['HTML CSS', 'Sass', 'JScript', 'jQuery', 'React', 'PHP'],
     datasets: [{
       label: '@ 2020.9',
-      data: [40, 30, 30, 30, 15, 5],
+      data: [40, 30, 30, 30, 30, 5],
       backgroundColor: 'rgba(255, 0, 0, 0.6)',
       borderColor: 'red',
       borderWidth: 1,
@@ -28,7 +28,7 @@
   ]
   };
   // 設定
-  var options = {
+  let options = {
     scale: {
       pointLabels: { // １つ１つのラベル
         fontSize: 16,
@@ -65,15 +65,12 @@
     // responsive: true, // グラフサイズ用（理解できん、、
     // maintainAspectRatio: false, // （理解できん、、
   };
-  var ctx = document.getElementById('my_chart').getContext('2d');
+  let ctx = document.getElementById('my_chart').getContext('2d');
 
-  var myChart = new Chart(ctx, {
+  let myChart = new Chart(ctx, {
     type: type,
     data: data,
     options: options,
   });
-
-
-
 
 })();
