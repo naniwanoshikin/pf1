@@ -134,7 +134,12 @@
         </div>
         <!-- スキル一覧 -->
         <div class="back">
-          <h2 class="skill" id="skill">スキル</h2>
+          <h2 class="skill" id="skill">スキル<label class="like">
+            <!-- いいねボタン -->
+              <input type="checkbox">
+              <i class="material-icons heart">favorite</i>
+              <div class="ripple"></div>
+            </label></h2>
           <!-- グラフ -->
           <div class="chart" title="React、PHPはまだ学習中です">
             <!-- ここの幅は比率。その為、divで囲った。 -->
@@ -156,24 +161,18 @@
       <h1 id="feat">特徴</h1>
       <p>クリックしてご覧下さい。</p>
       <div class="featlist">
-        <section> <!-- １枚目 -->
+        <section>
           <div class="pic">
             <img src="cafe/img/cafe1.jpg">
           </div>
           <div class="tex">
             <h2>
-              <a id="cafe" href="cafe/cafe.html" target="_blank">カフェ</a>
-              <!-- いいねボタン -->
-              <label class="like">
-                <input type="checkbox">
-                <i class="material-icons heart">favorite</i>
-                <div class="ripple"></div>
-              </label>
+              <a id="cafe1" href="cafe/cafe.html" target="_blank">カフェ</a>
             </h2>
             <p>Bootstrapを使ったカフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！</p>
           </div>
         </section>
-        <section>  <!-- ２枚目 -->
+        <section>
           <div class="pic">
             <img src="img/aich11.jpg" alt="">
           </div>
@@ -184,7 +183,7 @@
             <p>こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！</p>
           </div>
         </section>
-        <section>  <!-- ３枚目 -->
+        <section>
           <div class="pic">
             <img src="img/aich15.jpg" alt="">
           </div>
@@ -194,11 +193,12 @@
             </h2>
             <p>３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！３択クイズです！！</p>
           </div>
-        </section>  
+        </section>
       </div>
+      <div class="featlist" id="feata"></div>
     </section>
 
-<!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+    <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
     <!-- 地元紹介 -->
     <section class="city">
       <h1 id="town">地域紹介</h1>
@@ -286,31 +286,16 @@
         </a>
       </li>
       </ul>
-      <a href="#top">© shikitti-Portfolio.2020 </a>
+      <a href="#top">© shikitti-Portfolio.2020</a>
   </footer>
 
+
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  
-  <!-- scrollReveal機能 -->
-  <script src="scroll.js"></script>
-  <!-- モーダル機能 -->
-  <script src="modal.js"></script>
-  <!-- アニメーション -->
-  <script src="jQuery.js"></script>
-  <!-- 英語版表記 -->
-  <script src="english.js"></script>
-  <!-- 年齢 -->
-  <!-- <script src="age.js"></script> -->
-  <!-- chart.js読み込み -->
-  <script src="chart.js"></script>
-  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  <!-- react babel 読み込み -->
-  <script type="text/babel"> // 以下、React.js
+  <!-- React babel 読み込み -->
+  <script type="text/babel">
   (() => { // 即時関数
 
-  //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  // モーダル表示用
-
+  
 
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   // カウントアップ用
@@ -328,7 +313,7 @@
       return(
         <Counter
          counter={counter}
-         key={counter.id}
+         key={counter.id} // エラー回避
          countUp={props.countUp}
         />
       );
@@ -379,8 +364,8 @@
         <div className="reactcont">          
           <div>{this.state.total}{name.toUpperCase()}</div>
           <CounterList
-            countUp={this.countUp}
-            counters={this.state.counters}
+            countUp={this.countUp} //
+            counters={this.state.counters} //
           />          
         </div>
       );
@@ -396,7 +381,7 @@
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   // お問い合わせフォーム用
 
-  class Cont extends React.Component {
+  class Conta extends React.Component {
     constructor(props) { // なぜpropsが入るのか？
       super(props);
       this.state = { // stateの初期値
@@ -428,7 +413,6 @@
       });
     }
 
-
     render() {
       // JSXに書いている文の内容について条件分岐
       let NameError; // 名前入力
@@ -443,7 +427,7 @@
       if(this.state.hasContentError) {
         ContentError = (
           <p className="error-content">
-            お問い合わせ内容を入力してください
+            内容を入力してください
           </p>
         );
       }
@@ -467,11 +451,17 @@
                 <p>
                   <label>Email（必須）<input className="textline" type="text" placeholder="osaka@gmail.com"/></label>
                 </p>
-                <fieldset className="profession">
+                <p>
+                  <label htmlFor="age">年齢</label>
+                  <select name="age" id="age" className="textline">
+                    </select>
+                </p>
+
+                <fieldset className="conect">
                     <legend>ご希望の連絡方法</legend>
-                    <label><input type="radio" name="profession"/>メール</label>
-                    <label><input type="radio" name="profession"/>電話</label>
-                    <label><input type="radio" name="profession"/>どちらでも可</label>
+                    <label><input type="radio" name="conect"/>メール</label>
+                    <label><input type="radio" name="conect"/>電話</label>
+                    <label><input type="radio" name="conect"/>どちらでも可</label>
                     </fieldset>
               </div>
 
@@ -500,17 +490,27 @@
   }
 
   ReactDOM.render( // JS内
-  <Cont/>, // コンポーネントクラス
+  <Conta/>, // コンポーネントクラス
     document.getElementById('conta')
   );
 
-
-
-
   })();
   </script>
-  
 
-  
+  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+  <!-- アニメーション -->
+  <script src="jQuery.js"></script>
+  <!-- scrollReveal機能 -->
+  <script src="scroll.js"></script>
+  <!-- 英語版表記 -->
+  <script src="english.js"></script>
+  <!-- モーダル機能 -->
+  <script src="modal.js"></script>
+  <!-- chart.js読み込み -->
+  <script src="chart.js"></script>
+  <!-- 年齢 -->
+  <script src="age.js"></script>
+  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+   <!-- <script src="trash/trash.html"></script> -->
 </body>
 </html>
