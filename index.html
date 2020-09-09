@@ -289,7 +289,6 @@
       <a href="#top">© shikitti-Portfolio.2020</a>
   </footer>
 
-
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   <!-- React babel 読み込み -->
   <script type="text/babel">
@@ -298,7 +297,7 @@
   
 
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  // カウントアップ用
+  // カウントアップ機能
   // 表記方法
   function Counter(props) {
     return(
@@ -384,12 +383,16 @@
   class Conta extends React.Component {
     constructor(props) { // なぜpropsが入るのか？
       super(props);
-      this.state = { // stateの初期値
+      this.state = { // 初期値
         isSubmitted: false,
         name: "", // 入力値を管理（まだ入力不可）
-        hasNameError: false, // 入力値が空かどうかの状態を管理
+        hasNameError: true, // 入力値が空かどうかの状態を管理
         content: "",
-        hasContentError: false,
+        hasContentError: true,
+        age: '？歳', // selectした値
+        hasAgeError: true,
+        value: '任意の方法', // ラジオボタンの値
+        hasMailError: true,
       };
     }
 
@@ -398,85 +401,133 @@
       this.setState({isSubmitted: true}); // 初期値がtrueになる
     }
     handleName(event) { // 名前が入力された場合、
-      const inputValue = event.target.value;
+      const inputValue = event.target.value; // 入力値の、
       // const isEmpty = inputValue === "";
       this.setState({
         name: inputValue, // ここを書かないと値を入力できない
-        hasNameError: inputValue === "", // 入力値が空になった
+        hasNameError: inputValue === "", // エラー文字が消える
       });
     }
-    handleContent(event) { // お問い合わせが入力された場合、
+    handleContent(event) { // 内容が入力された場合、
       const inputValue = event.target.value;
       this.setState({
         content: inputValue,
         hasContentError: inputValue === "",
       });
     }
+    handleAge(event) { // 年齢が選択された場合、
+      this.setState({
+        age: event.target.value,
+        hasAgeError: event.target.value === "",
+      });
+    }
+    handleMail(event) { // ラジオボタンの値が選択された場合、
+      this.setState({
+        value: event.target.value,
+        hasMailError: event.target.value === "",
+      });
+    }
 
     render() {
       // JSXに書いている文の内容について条件分岐
-      let NameError; // 名前入力
+      let NameError; // お名前
       if(this.state.hasNameError) { // propsが真（空になった）なら、
         NameError = ( // JSX文は下記が表示される。
-          <p className="error-name">
-            名前を入力してください
+          <p className="error-message">
+            ※お名前を入力してください
           </p>
         );
       }
-      let ContentError; // お問い合せ内容入力
+      let ContentError; // お問い合せ内容
       if(this.state.hasContentError) {
         ContentError = (
-          <p className="error-content">
-            内容を入力してください
+          <p className="error-message">
+            ※希望事項を入力してください
+          </p>
+        );
+      }
+      let AgeError; // 年齢の選択
+      if(this.state.hasAgeError) {
+        AgeError = (
+          <p className="error-message">
+            ※年齢を選択してください
+          </p>
+        );
+      }
+      let MailError; // 連絡方法の選択
+      if(this.state.hasMailError) {
+        MailError = (
+          <p className="error-message">
+            ※希望の連絡方法を選択してください
           </p>
         );
       }
       let contactForm;// Form画面
       if(this.state.isSubmitted) { // propsがtrueならば、
         contactForm = (
-          <div className="submit-m">送信完了</div>
+          <ul className="submit-m">
+            <h4>下記にて受付致しました。後日ご案内いたします。</h4>
+            <p>お名前</p>
+            <li>「<span>{this.state.name}</span>」さん</li>
+            <p>年齢</p>
+            <li>「<span>{this.state.age}</span>」</li>
+            <p>内容</p>
+            <li>「<span>{this.state.content}</span>」</li>
+            <p>連絡方法</p>
+            <li>「<span>{this.state.value}</span>」</li>
+            <div className="checked">
+              <button>確認完了</button>
+            </div>
+          </ul>
         ); 
       } else { // 元文
         contactForm = (
           <form action="" onSubmit={() => {this.handleSubmit()}}>
             <div className="form">
               <div className="frontform">
-                <label>お名前（必須）
-                  <input type="text" className="textline" placeholder="大阪太郎"
+                {NameError}
+                <label>お名前（必須）  <input type="text" className="textline" placeholder="大阪太郎"
                   value={this.state.name} // 入力値
                   onChange={(event) => {this.handleName(event)}}
-                  />
+                  /> 
                 </label>
-                {NameError}
                 <p>
-                  <label>Email（必須）<input className="textline" type="text" placeholder="osaka@gmail.com"/></label>
+                  <label>Email（任意） <input className="textline" type="text" placeholder="osaka@gmail.com"/></label>
                 </p>
-                <p>
-                  <label htmlFor="age">年齢</label>
-                  <select name="age" id="age" className="textline">
-                    </select>
-                </p>
-
+                {AgeError} 
+                <label htmlFor="age">年齢（任意）  </label>
+                <select name="age" id="age" className="textline"
+                value={this.state.age}
+                onChange={(event) => {this.handleAge(event)}}>
+                  <option value="？歳">年齢がまだ未選択です</option>
+                  <option value="30-34歳">30-34歳</option>
+                  <option value="35-39歳">35-39歳</option>
+                  <option value="40歳-">40歳-</option>
+                </select>
+                {MailError}
                 <fieldset className="conect">
-                    <legend>ご希望の連絡方法</legend>
-                    <label><input type="radio" name="conect"/>メール</label>
-                    <label><input type="radio" name="conect"/>電話</label>
-                    <label><input type="radio" name="conect"/>どちらでも可</label>
-                    </fieldset>
+                  <legend>連絡方法（任意）</legend>
+                  <label><input type="radio" name="conect" value="メール"
+                    onChange={() => {this.handleMail(event)}}/>メール</label>
+                  <label><input type="radio" name="conect"value="電話" 
+                    onChange={() => {this.handleMail(event)}}/>電話</label>
+                  <label><input type="radio" name="conect" value="メールまたは電話"
+                    onChange={() => {this.handleMail(event)}}/>どちらも可</label>
+                </fieldset>
               </div>
 
               <div className="backform">
-                <p>お問い合わせ内容（必須）</p>
-                  <textarea className="textline" name="" id="" cols="40" rows="10" placeholder="希望事項（1000字まで）" 
+                {ContentError}
+                <p className="naiyo">お問い合わせ内容（必須）</p>
+                  <textarea className="textline" name="" id="" cols="40" rows="10" placeholder="（1000字まで）" 
                     value={this.state.content}
                     onChange={(event) => {this.handleContent(event)}}
                     />
-                {ContentError}
               </div>
             </div>
 
             <div className="sub">
-              <input type="submit" value="送信する" className="submit"/>
+              <input type="submit" value="送信する" id="sub" className="submit"/>
             </div>
           </form>
         );
@@ -508,8 +559,6 @@
   <script src="modal.js"></script>
   <!-- chart.js読み込み -->
   <script src="chart.js"></script>
-  <!-- 年齢 -->
-  <script src="age.js"></script>
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
    <!-- <script src="trash/trash.html"></script> -->
 </body>
