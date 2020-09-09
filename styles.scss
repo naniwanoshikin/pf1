@@ -46,17 +46,32 @@
 }
 // 送信完了 React.js
 .submit-m {
-  color: #711dd1;
-  line-height: 15; //倍数
-  font-size: 20px;
+  padding: 20px 30px;
   background-color: rgba(48, 214, 184, 0.16);
-  border: 2px dashed #dd4b11;
-  border-radius: 15px;
+  border: 1px dashed #dd4b11;
+  border-radius: 30px;
+  text-align: left;
+  h4 {
+    margin-top: 0;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 0;
+    text-decoration: underline;
+  }
+  span {
+    color: #883ddd;
+    font-size: 20px;
+  }
+  .checked { // 確認ボタン
+    margin-top: 5px;
+    text-align: center;
+  }
 }
-.error-name, .error-content {
+.error-message { // 未入力
   color: #ff4d75;
-  margin-top: 3px;
-  text-align: center;
+  margin-bottom: 0;
+  text-align: left;
 }
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // リンクのホバー色
@@ -107,7 +122,6 @@ h2 {
 }
 ul {
   list-style: none;
-  // list-style-type: circle;
 }
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -139,6 +153,15 @@ header {
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // ナビ
 nav {
+  a {
+    @include acolor;   
+  }
+  .menubtn { // ナビアイコン▼
+    // background: green;
+    color: white;
+    font-size: 25px;
+    text-align: right;
+  }
   ul {
     display: none;
     padding: 0 20px;
@@ -147,23 +170,33 @@ nav {
     background: rgba(34, 49, 52, 1);
     border-radius: 0 0 20px 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  li {
-    margin-left: 15px;
-    /* font-size: 15px; */
-    /* line-height: 3; */
-  }
-  a {
-    @include acolor;   
-  }
-  .menubtn {
-    /* background: green; */
-    color: white;
-    font-size: 25px;
-    text-align: right;
+    li {
+      margin-left: 15px;
+      /* font-size: 15px; */
+      /* line-height: 3; */
+    }
   }
 }
-
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* フッター */
+footer {
+  padding: 10px 0 20px ; //←autoだと適用されず
+  background: #323135;
+  color: #98969c;
+  text-align: center;
+  a {
+    display: block;
+    @include acolor;  
+  }
+  /* SNS */
+  .sns {
+    display: inline-flex;
+    margin-bottom: 0 auto 10px;
+    li {
+      padding-right: 20px;
+    }
+  }
+}
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* メイン */
 main {
@@ -186,27 +219,6 @@ section > p {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 30px;
-}
-
-// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-/* フッター */
-footer {
-  padding: 10px 0 20px ; //←autoだと適用されず
-  background: #323135;
-  color: #98969c;
-  text-align: center;
-  a {
-    display: block;
-    @include acolor;  
-  }
-  /* SNS */
-  .sns {
-    display: inline-flex;
-    margin-bottom: 0 auto 10px;
-    li {
-      padding-right: 20px;
-    }
-  }
 }
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -454,15 +466,20 @@ footer {
     border-radius: 8px;
   }
   /* 連絡方法 */
-  .profession {
+  .conect {
     display: inline;
     border-radius: 14px;
+    margin: 5px auto 0;
     text-align: left;
   }
   /* 年齢 */
   .age {
     // text-align: left;
     padding-left: 25px;
+  }
+  // 内容
+  .naiyo {
+    margin: 3px auto 5px;
   }
   .textage {
     padding: 5px;
@@ -483,7 +500,7 @@ footer {
     margin: 20px auto;
     box-shadow    : 3px 3px 6px #666666; 
     &:hover {
-      box-shadow: none;     /* カーソル時の影消去 */
+      box-shadow: none; /* 影消去 */
     }
   }
 }
@@ -543,17 +560,14 @@ footer {
 }
 
 
-
 /* レスポンシブ機能 */
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* medium screen */
-
 @media (min-width: 550px)  {
 
   // 自己紹介
   .about {
     max-width: 900px;
-    // margin: 20px auto 0;
     img {
       width: 40%;
     }
@@ -572,6 +586,9 @@ footer {
   .contact {
     margin: 20px auto 0;
     max-width: 800px;
+    .error-message {
+      text-align: center;
+    }
   }
 }
 
@@ -588,11 +605,9 @@ footer {
     height: 715px;
   }
 }
-
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* large screen */
-@media (min-width: 800px)  {
-
+@media (min-width: 820px)  {
   /* 自己紹介 */
   .about {
     .frontback {
@@ -654,14 +669,17 @@ footer {
   /* お問い合わせ */
   .form {
     display: flex;
-    padding: 0 60px;
+    padding: 0 50px;
     justify-content: space-between;
+    .error-message {
+      text-align: left;
+    }
     .frontform {
       margin: 0;
       padding: 0;
     }
-    .backform p {
-      margin: 0 auto 10px;
+    .backform {
+      margin: 0 5%;
     }
   }
 }
