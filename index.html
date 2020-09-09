@@ -455,13 +455,13 @@
       if(this.state.hasMailError) {
         MailError = (
           <p className="error-message">
-            ※ご希望の連絡方法を選択してください
+            ※ご希望の方法を選択してください
           </p>
         );
       }
-      let contactForm;// Form画面
-      if(this.state.isSubmitted) { // propsがtrueならば、
-        contactForm = (
+      let contactForm;// propsが、
+      if(this.state.isSubmitted) { // trueならば、
+        contactForm = ( // 送信後の画面
           <ul className="submit-m">
             <h4>下記にて受付致しました。後日ご案内いたします。</h4>
             <p>お名前</p>
@@ -472,36 +472,35 @@
             <li>「<span>{this.state.content}</span>」</li>
             <p>連絡方法</p>
             <li>「<span>{this.state.value}</span>」</li>
-            <div className="checked" id="checked">
-              <button>確認完了</button>
+            <div className="checked" id="">
+              <input type="submit" value="確認完了" className="submit"/>
             </div>
           </ul>
         ); 
-      } else { // 元文
-        contactForm = (
+      } else { // falseならば、
+        contactForm = ( // 元文
           <form action="" onSubmit={() => {this.handleSubmit()}}>
             <div className="form">
               <div className="frontform">
-                {NameError}
                 <label>お名前（必須）  <input type="text" className="textline" placeholder="大阪太郎"
                   value={this.state.name} // 入力値
                   onChange={(event) => {this.handleName(event)}}
                   /> 
                 </label>
-                <p>
-                  <label>Email（任意） <input className="textline" type="text" placeholder="osaka@gmail.com"/></label>
-                </p>
-                {AgeError} 
-                <label htmlFor="age">年齢（任意）  </label>
-                <select name="age" id="age" className="textline"
-                value={this.state.age}
-                onChange={(event) => {this.handleAge(event)}}>
-                  <option value="？歳">年齢がまだ未選択です</option>
+                {NameError}
+                  
+                <p className="age">
+                  <label htmlFor="age">年齢（任意）   </label>
+                  <select name="age" id="age" className="textline"
+                  value={this.state.age}
+                  onChange={(event) => {this.handleAge(event)}}>
+                  <option value="？歳">年齢が未選択です。</option>
                   <option value="30-34歳">30-34歳</option>
                   <option value="35-39歳">35-39歳</option>
                   <option value="40歳-">40歳-</option>
-                </select>
-                {MailError}
+                  </select>
+                </p>
+                {AgeError}
                 <fieldset className="conect">
                   <legend>連絡方法（任意）</legend>
                   <label><input type="radio" name="conect" value="メール"
@@ -509,21 +508,22 @@
                   <label><input type="radio" name="conect"value="電話" 
                     onChange={() => {this.handleMail(event)}}/>電話</label>
                   <label><input type="radio" name="conect" value="メールまたは電話"
-                    onChange={() => {this.handleMail(event)}}/>どちらも可</label>
+                    onChange={() => {this.handleMail(event)}}/>どちらでも可</label>
                 </fieldset>
+                {MailError}
               </div>
 
               <div className="backform">
+                <p htmlFor="naiyo" className="naiyo">お問い合わせ内容（必須）</p>
+                <textarea className="textline" id="naiyo" cols="40" rows="10" maxLength="500" placeholder="（500字まで）" 
+                value={this.state.content}
+                onChange={(event) => {this.handleContent(event)}}
+                />
                 {ContentError}
-                <p className="naiyo">お問い合わせ内容（必須）</p>
-                  <textarea className="textline" name="" id="" cols="40" rows="10" placeholder="（1000字まで）" 
-                    value={this.state.content}
-                    onChange={(event) => {this.handleContent(event)}}
-                    />
               </div>
             </div>
 
-            <div className="sub" id="sub">
+            <div className="" id="sub">
               <input type="submit" value="送信する" className="submit"/>
             </div>
           </form>
