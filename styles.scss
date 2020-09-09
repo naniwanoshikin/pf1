@@ -63,14 +63,11 @@
     color: #883ddd;
     font-size: 20px;
   }
-  .checked { // 確認ボタン
-    margin-top: 5px;
-    text-align: center;
-  }
+
 }
 .error-message { // 未入力
   color: #ff4d75;
-  margin-bottom: 0;
+  margin: 0 auto 10px;
   text-align: left;
 }
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -218,7 +215,7 @@ section > p {
   font-size: 18px;
   text-align: center;
   margin-top: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -460,10 +457,14 @@ section > p {
   border-radius: 50px 50px 0 0;
   background: rgb(240, 190, 99);
   text-align: center;
-  /* テキスト入力 */
+  /* テキスト枠 */
   .textline {
     padding: 10px;
     border-radius: 8px;
+  }
+  /* 年齢 */
+  .age {
+    margin-top: 14px;
   }
   /* 連絡方法 */
   .conect {
@@ -472,18 +473,9 @@ section > p {
     margin: 5px auto 0;
     text-align: left;
   }
-  /* 年齢 */
-  .age {
-    // text-align: left;
-    padding-left: 25px;
-  }
-  // 内容
+  // お問い合わせ内容
   .naiyo {
     margin: 3px auto 5px;
-  }
-  .textage {
-    padding: 5px;
-    border-radius: 8px;
   }
   /* 送信ボタン */
   .submit {
@@ -503,6 +495,10 @@ section > p {
       box-shadow: none; /* 影消去 */
     }
   }
+  // 確認ボタン
+  .checked {
+    text-align: center;
+  }  
 }
 //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* いいねボタン */
@@ -671,15 +667,13 @@ section > p {
     display: flex;
     padding: 0 50px;
     justify-content: space-between;
+    align-items: center;
     .error-message {
       text-align: left;
     }
     .frontform {
       margin: 0;
       padding: 0;
-    }
-    .backform {
-      margin: 0 5%;
     }
   }
 }
