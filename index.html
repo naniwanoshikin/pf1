@@ -267,14 +267,14 @@
       <li><!-- github -->
         <a href="https://github.com/naniwanoshikin/shikichanpower.github.io/blob/master/index.html" target="_blank">
           <span class="faa-parent animated-hover">
-            <i class="fab fa-github fa-lg faa-ring"></i>
+            <i class="fab fa-github fa-lg faa-tada"></i>
           </span>
         </a>
       </li>
       <li><!-- twitter -->
         <a class="share" href="https://twitter.com/intent/tweet?text=学習方法で困っている方々必見&url=https://dotinstall.com/lessons&related=@power_of_shikin" target="_blank" rel="nofollow">
           <span class="faa-parent animated-hover">           
-            <i class="fab fa-twitter fa-lg faa-ring"></i>
+            <i class="fab fa-twitter fa-lg faa-passing"></i>
           </span>
         </a>
       </li>
@@ -455,7 +455,7 @@
       if(this.state.hasMailError) {
         MailError = (
           <p className="error-message">
-            ※希望の連絡方法を選択してください
+            ※ご希望の連絡方法を選択してください
           </p>
         );
       }
@@ -472,7 +472,7 @@
             <li>「<span>{this.state.content}</span>」</li>
             <p>連絡方法</p>
             <li>「<span>{this.state.value}</span>」</li>
-            <div className="checked">
+            <div className="checked" id="checked">
               <button>確認完了</button>
             </div>
           </ul>
@@ -523,8 +523,8 @@
               </div>
             </div>
 
-            <div className="sub">
-              <input type="submit" value="送信する" id="sub" className="submit"/>
+            <div className="sub" id="sub">
+              <input type="submit" value="送信する" className="submit"/>
             </div>
           </form>
         );
