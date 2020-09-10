@@ -116,6 +116,8 @@ h2 {
   font-size: 25px;
   text-align: center;
   letter-spacing: 0.15em;
+  margin: 20px 10% 20px;
+  border-bottom: 2px solid rgb(178, 223, 15);
 }
 ul {
   list-style: none;
@@ -249,10 +251,6 @@ section > p {
   margin: 20px auto;
   border-radius: 40px;
   justify-content: space-between;
-  h2 {
-    margin: 30px 10% 10px;
-    border-bottom: 2px solid rgb(178, 223, 15);
-  }
   .front {
     p {
       text-align: center;
