@@ -1,5 +1,5 @@
 'use strict'; {
-  // React.jsの中身には対応できない？
+  // React.jsの中身には対応していない？
 
   // chart画像
   let node = {
@@ -28,15 +28,20 @@
     // viewFactor: 0,
     interval: 400,
   };
-  // タイトルやReact類
+  // タイトル、React類
   let slideUp = {
-    duration: 700, // アニメーションの長さ
+    duration: 900, // アニメーションの長さ
     distance: '50%', // 移動距離
-    origin: 'bottom', // 下から
-    opacity: 0.4, // 薄さ
-    scale: 0.5, // 初期サイズ
+    origin: 'left', // 下から
+    opacity: 0.7, // 薄さ
+    scale: 1.5, // 初期サイズ
     delay: 20, // アニメーションの遅延
-    viewFactor: 0.7, // どれくらい見えたら実行するか 0-1
+    viewFactor: 0.9, // どれくらい見えたら実行するか 0-1
+    rotate: { // 回転
+      x: 50,
+      y: 90,
+      z: 90, // 正面周り
+    },
   };
 
   // 対象
@@ -44,8 +49,6 @@
   let nodeList1 = document.querySelectorAll('.pic > img');
   let nodeArray1 = [ // ここにAll入れることはできない？
     document.querySelector('#wellcome'),
-    document.querySelector('#about'),
-    document.querySelector('#feat'),
     document.querySelector('#root'),
     document.querySelector('#conta'),
   ];
