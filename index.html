@@ -333,7 +333,7 @@
           <span className={props.todo.isDone ? 'done' : ''}>
             {props.todo.title}
           </span>
-          <span className="cmd"
+          <span className="cmd" // 削除ボタン
             onClick={() => {props.deleteTodo(props.todo)}}>[x]
           </span>
         </label>
@@ -406,13 +406,14 @@
     }
     // 共通項：定義はどれもthis.state.todos.~と書いている。機能をここに書いていく。
     // 削除するときに、
-    deleteTodo(todo) { // 今回はオブジェクトのプロパティまではいじらないのでslice
+    deleteTodo(todo) {
       if(!confirm('are you sure?')) { // OKなら
         return; // 削除
       }
+       // 今回はオブジェクトのプロパティまではいじらないのでslice
       const todos = this.state.todos.slice(); // 文字列
-      const pos = this.state.todos.indexOf(todo.todo);
-      todos.splice(pos, 1); // pos番目から1つの要素を削除
+      const pos = this.state.todos.indexOf(todo); // 選択したインデックス
+      todos.splice(pos, 1); // pos番目から1つの要素を削除。
       this.setState({
         todos: todos // これが新しく作ったtodosだよ。
       });
