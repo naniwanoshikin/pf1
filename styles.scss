@@ -1,14 +1,8 @@
 @charset "utf-8";
 /* small screen */
 
-/* javaScript用 HelloWorld フォント */
-.js-hello {
-  color: palegoldenrod;
-  font-size: 30px;
-  letter-spacing: 0.1em;
-}
-
 // react.js用
+// カウントアップ機能
 .reactcont {
   display: flex; // 中央
   align-items: center; // 中央
@@ -44,6 +38,50 @@
     }
   }
 }
+// Todo管理アプリ
+.todo {
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+  p {
+    font-size: 22px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #dd4b11;
+    padding: 16px 0;
+    button {
+      float: right;
+    }
+    span {
+      color: #ccc;
+      font-size: 16px;
+      font-weight: nomal;
+      margin-left: 5px;
+    }
+  }
+  ul {
+    padding: 0;
+    li {
+      line-height: 1.5;
+      .done {
+        text-decoration: line-through;
+        color: #ccc;
+      }
+      .cmd {
+        font-size: 12px;
+        cursor: pointer;
+        color: #08c;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+.todo input[type="checkbox"] { // ✔️の横
+  margin-right: 5px;
+}
+.todo input[type="text"] { // 入力欄の横
+  padding: 2px;
+  margin-right: 5px;
+}
 // 送信完了 React.js
 .submit-m {
   padding: 20px 30px;
@@ -52,7 +90,7 @@
   border-radius: 30px;
   text-align: left;
   h4 {
-    margin-top: 0;
+    margin: 0 auto;
     text-align: center;
   }
   p {
@@ -63,12 +101,18 @@
     color: #883ddd;
     font-size: 20px;
   }
-
 }
 .error-message { // 未入力
   color: #ff4d75;
   margin: 0 auto 10px;
   text-align: left;
+}
+
+/* javaScript用 HelloWorld フォント */
+.js-hello {
+  color: palegoldenrod;
+  font-size: 30px;
+  letter-spacing: 0.1em;
 }
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // リンクのホバー色
@@ -226,6 +270,7 @@ section > p {
   margin-top: 60px;
   padding: 15px 30px 0;
   height: 450px;
+  overflow: auto; // 上下可変スクロール
   background: center/cover url(img/mitsui.JPG);
   color: white;
   h1 {
@@ -280,7 +325,6 @@ section > p {
   }
 
   .back {
-    margin: 0 auto;
     text-align: center;
     // チャート
     .chart {
@@ -673,5 +717,9 @@ section > p {
       margin: 0;
       padding: 0;
     }
+  }
+  // React.js 送信確認画面
+  .submit-m {
+    margin: 20px 10%;
   }
 }
