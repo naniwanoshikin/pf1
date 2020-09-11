@@ -59,6 +59,8 @@
       <button class="english">English</button>
       <button class="van">Vanish</button>
       <h1 id="wellcome" data-translation="Dotinstall">Hello World</h1>
+      <!-- Todoアプリ機能 -->
+      <div id="root1"></div>
     </section>
 
     <!-- 自己紹介 -->
@@ -74,7 +76,7 @@
           <!-- プロフィール -->
           <h2 id="profile" class="profile">プロフィール</h2>
           <p>しきっち / 1991年生まれ</p>
-          <p>工学部卒（橋梁）</p>
+          <p>工学部卒</p>
           <!-- 詳細ボタン -->
           <div class="btn" id="open">年表ボタン</div>
           <!-- マスク -->
@@ -245,8 +247,6 @@
         </div>
       </div>
       <!-- カウントアップ機能 -->
-      <div id="root"></div>
-      <!-- Todo list機能 -->
       <div id="root2"></div>
       <!-- <script src="todolist.js"></script> -->
     </section>
@@ -296,39 +296,198 @@
   <!-- React babel 読み込み -->
   <script type="text/babel">
   (() => { // 即時関数
-  // TO do list機能
+
+  //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+  // Todo管理アプリ機能
+
+  // li要素の中身を初期表示状態
   const todos = [
-    {id: 0, title: 'Task 0', isDone: false},
-    {id: 1, title: 'Task 1', isDone: false},
-    {id: 2, title: 'Task 2', isDone: true},
+    // {id: 0, title: 'Task 0', isDone: false},
+    // {id: 1, title: 'Task 1', isDone: false},
+    // {id: 2, title: 'Task 2', isDone: true},
   ];
 
-
+  // パージ部の本文
+  function TodoHeader(props) {
+    // 未完了のli要素だけを取得
+    const remaining = props.todos.filter(todo=>{
+      return !todo.isDone;
+    });
+    return ( // 削除機能だからpurgeがとる引数はないってこと？？
+      <p>
+        <button onClick={() => props.purge()}>Purge</button>
+        My Todos
+        <span>({remaining.length}/{props.todos.length})</span>
+      </p>
+    );
+  }
+  // li要素 本文（li要素も拡張しやすいようにコンポーネントにしている）
+  function TodoItem(props) { // stateを保持しないので関数で作る
+    return( // onChangeを設定し、親クラスのstateを変更し、親へ処理をゆずっていく。props.checkTodoに引数props.todoを渡す。
+      <li>
+        <label>
+          <input type="checkbox"
+            checked={props.todo.isDone}
+            onChange={() => props.checkTodo(props.todo)}
+          />
+          <span className={props.todo.isDone ? 'done' : ''}>
+            {props.todo.title}
+          </span>
+          <span className="cmd"
+            onClick={() => {props.deleteTodo(props.todo)}}>[x]
+          </span>
+        </label>
+      </li>
+    );
+  }
+  // ul要素 本文
   function TodoList(props) {
-    const todos = props.todos.map( todo => {
+    const todos = props.todos.map(todo => { // 渡されたpropsをmapで処理
       return(
-        <li key={todo.id}>{todo.title}</li>
+        <TodoItem
+          todo={todo} // ★propsのtodo属性として子へ渡す。
+          key={todo.id}
+          checkTodo={props.checkTodo} // 親へ渡す。
+          deleteTodo={props.deleteTodo} // 親へ渡す。
+          />
       );
     });
-    return(
+    return( // 文字があれば{todos}、なければNothing
       <ul>
-        {todos}
+        {props.todos.length ? todos: <li> Nothing to do</li>}
       </ul>
     );
   }
 
+  // propsとしてこちらに値が渡される。UI変更はsetStateのみで行う為、値を入力できない。その為、onChangeイベントを設定し、Todoコンポーネントで実装していく！
+  // 入力欄の本文
+  function TodoForm(props) {
+    return(
+      <form onSubmit={props.addTodo}>
+        <input type="text" value={props.item}
+          onChange={props.updateItem}
+        />
+        <input type="submit" value="追加"/>  
+      </form>
+    );
+  }
+  // li要素のidを生成
+  function getUniqueId() { // 現在時刻-乱数 36進数
+    return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
+  }
+
+  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  // ここでデータを一元管理する
   class Todo extends React.Component {
     constructor() {
       super();
       this.state = {
-        todos: todos
+        todos: todos, // todosというキー：todosの値
+        item: '' // テキスト入力
       };
+      // 何のためにここ書いている？？
+      this.checkTodo = this.checkTodo.bind(this);
+      this.deleteTodo = this.deleteTodo.bind(this);
+      this.updateItem = this.updateItem.bind(this);
+      this.addTodo = this.addTodo.bind(this);
+      this.purge = this.purge.bind(this);
     }
+
+    purge() {
+      if(!confirm('are you sure?')) { // OKなら
+        return; // 削除
+      }
+      const todos = this.state.todos.filter(todo => {
+        return !todo.isDone; // チェックされた要素を対象に
+      });
+      this.setState({
+        todos: todos // 新しく作ったtodosを更新
+      });
+    }
+    // 共通項：定義はどれもthis.state.todos.~と書いている。機能をここに書いていく。
+    // 削除するときに、
+    deleteTodo(todo) { // 今回はオブジェクトのプロパティまではいじらないのでslice
+      if(!confirm('are you sure?')) { // OKなら
+        return; // 削除
+      }
+      const todos = this.state.todos.slice(); // 文字列
+      const pos = this.state.todos.indexOf(todo.todo);
+      todos.splice(pos, 1); // pos番目から1つの要素を削除
+      this.setState({
+        todos: todos // これが新しく作ったtodosだよ。
+      });
+    }
+    // チェックON/OFF管理するときに、
+    checkTodo(todo) { // onChangeできたこのtodoをindexOfのtodoに渡す。
+      // stateが変更できないので全てのpropsの値を持つtodosのコピーを作る。1つ１つの要素をtodoとして処理。値を変更するため、mapを用いる。
+      const todos = this.state.todos.map(todo => {
+        return {id: todo.id, title: todo.title, isDone: todo.isDone};
+      });
+      // この中で何番目のidDoneを変更すればいいか
+      const pos = this.state.todos.map(todo => { // pos番目とは、
+        return todo.id; // idプロパティの配列の中で、
+      }).indexOf(todo.id); // 渡されてきたtodo.idと同じ番号のことで、
+       // その番のisDoneを反転する。（チェックボタンおす）
+      todos[pos].isDone = ! todos[pos].isDone;
+      this.setState({ // 値を変更
+        todos: todos // これが新しく作ったtodosだよ。
+      });
+    }
+    // テキスト入力値の管理したときに、
+    updateItem(e) { // formの値はイベントオブジェクトから取得できるのでeを設定。ここってeventでもいい？
+      this.setState({
+        item: e.target.value
+      });
+    }
+    // ボタン追加したときに、
+    addTodo(e) { // 画面が遷移しないようにeをつける
+      e.preventDefault();
+      if(this.state.item.trim() === '') { // trim???????
+        return;
+      }
+      const item = { // 追加したいtodosオブジェクト
+        id: getUniqueId(),
+        title: this.state.item, // テキストの名前
+        isDone: false
+      };
+      const todos = this.state.todos.slice(); // 新しい文字列
+      todos.push(item); // todosに対して上記itemを追加
+      this.setState({
+        todos: todos,
+        // item: ''
+      });
+    }
+    // Local Strageを使って永続化
+    // コンポーネントが更新される際にデータを保存する。
+    componentDidUpdate() { // keyはtodos、stateの値を保持
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+    // コンポーネントがマウントされる際にLocalStorageにデータを読み込む。
+    componentDidMount() {
+      this.setState({ // todosの中身をLocalStorageの中身にしたい
+        todos: JSON.parse(localStorage.getItem('todos')) || [] // 上手くいかなければ空配列にしてあげる。
+      });
+    }
+
     render() {
       return (
-        <div>
-          <h1>My Todos</h1>
-          <TodoList todos={this.state.todos}/>
+        <div className="todo">
+          <TodoHeader // タイトル + リスト数  コンポーネント
+          // todos属性の値を子へ渡す
+            todos={this.state.todos} // Todoの数
+            purge={this.purge} // 一斉削除メソッド
+          />
+          <TodoForm // 入力値の各属性
+            item={this.state.item} // テキスト
+            updateItem={this.updateItem} // 入力管理メソッド
+            addTodo={this.addTodo} // 追加メソッド
+          />
+          <TodoList // リスト内の各属性
+            todos={this.state.todos} // id, title, idDone
+            // 子より受け取ったメソッド
+            checkTodo={this.checkTodo} // チェックメソッド
+            deleteTodo={this.deleteTodo} // 削除メソッド
+            />
         </div>
       );
     }
@@ -336,12 +495,11 @@
 
   ReactDOM.render( // JS内
   <Todo/>, // コンポーネントクラス
-    document.getElementById('root2')
+    document.getElementById('root1')
   );
 
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  // カウントアップ機能
-  // 表記方法
+  //  カウントアップ機能
   function Counter(props) {
     return(
       <li style={{backgroundColor:props.counter.color}} onClick={() => props.countUp(props.counter)}>
@@ -349,7 +507,6 @@
       </li>
     );
   }
-
   function CounterList(props) {
     const counters = props.counters.map(counter => {
       return(
@@ -366,8 +523,6 @@
       </ul>
     );
   }
-
-
   class App extends React.Component {
     constructor() {
       super();
@@ -382,21 +537,20 @@
       };
       this.countUp = this.countUp.bind(this);
     }
-    // カウントアップ機能
     countUp(counter) {
-      this.setState(prevState => { // 値をsetするときはsetStateとかく
+      this.setState(prevState => {
         const counters = prevState.counters.map(counter => {
           return {id: counter.id, count: counter.count, color: counter.color};
         });
         const pos = counters.map(counter => {
           return counter.id;
-        }).indexOf(counter.id); // counterのidを持つデータの何番目か
-        counters[pos].count++; // pos番目のcountを1増やす
+        }).indexOf(counter.id);
+        counters[pos].count++;
         return {
           counters: counters,
           total: prevState.total + 1
         };
-      }); // setStateするたびにrendarが呼ばれ、新しい値でUIが再描画される
+      });
     }
 
     render() {
@@ -404,8 +558,8 @@
         <div className="reactcont">          
           <div>{this.state.total}{name.toUpperCase()}</div>
           <CounterList
-            countUp={this.countUp} //
-            counters={this.state.counters} //
+            countUp={this.countUp}
+            counters={this.state.counters}
           />          
         </div>
       );
@@ -415,7 +569,7 @@
 
   ReactDOM.render(
   <App/>,
-    document.getElementById('root')
+    document.getElementById('root2')
   );
   
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
@@ -502,7 +656,7 @@
           </p>
         );
       }
-      let contactForm;// propsが、
+      let contactForm; // このpropsが、
       if(this.state.isSubmitted) { // trueならば、
         contactForm = ( // 送信後の画面
           <ul className="submit-m">
