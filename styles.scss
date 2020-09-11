@@ -39,19 +39,19 @@
   }
 }
 // Todo管理アプリ
-.todo {
+.todo { // 全体
   width: 70%;
   margin: 0 auto;
   text-align: left;
   p {
     font-size: 22px;
     margin-bottom: 0;
-    border-bottom: 1px solid #dd4b11;
+    border-bottom: 1px solid #e1f00f;
     padding: 16px 0;
-    button {
+    button { // パージボタン
       float: right;
     }
-    span {
+    span { // (3/9)とか
       color: #ccc;
       font-size: 16px;
       font-weight: nomal;
@@ -62,14 +62,14 @@
     padding: 0;
     li {
       line-height: 1.5;
-      .done {
+      .done { // ✔︎したタイトル
         text-decoration: line-through;
         color: #ccc;
       }
-      .cmd {
-        font-size: 12px;
+      .cmd { // 削除ボタン
+        font-size: 14px;
         cursor: pointer;
-        color: #08c;
+        color: rgb(233, 18, 233);
         margin-left: 5px;
       }
     }
@@ -718,8 +718,14 @@ section > p {
       padding: 0;
     }
   }
-  // React.js 送信確認画面
-  .submit-m {
-    margin: 20px 10%;
-  }
+}
+
+// React.js
+// 送信確認画面
+.submit-m {
+  margin: 20px 10%;
+}
+// Todo管理アプリ
+.todo {
+  width: 40%;
 }
