@@ -4,10 +4,10 @@
   let type = 'radar';
   // 値
   let data = {
-    labels: ['HTML CSS', 'Sass', 'JScript', 'jQuery', 'React', 'PHP'],
+    labels: ['HTML CSS', 'Sass', 'JScript', 'jQuery', 'React', 'Vue', 'PHP'],
     datasets: [{
       label: '@ 2020.9',
-      data: [40, 30, 30, 30, 30, 5],
+      data: [45, 30, 40, 30, 30, 10, 5],
       backgroundColor: 'rgba(255, 0, 0, 0.6)',
       borderColor: 'red',
       borderWidth: 1,
@@ -18,7 +18,7 @@
     }, 
     {
       label: '@2021.9(est.)',
-      data: [90, 85, 90, 80, 70, 40],
+      data: [90, 85, 90, 80, 70, 30, 40],
       backgroundColor: 'rgba(0, 0, 255, 0.1)',
       borderColor: 'blue',
       borderWidth: 1,
