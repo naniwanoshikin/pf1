@@ -1,7 +1,56 @@
 @charset "utf-8";
 /* small screen */
 
-// react.js用
+
+// Todo管理アプリ Vue.js
+.vue {
+  width: calc(180px + 20%);
+  margin: 10px auto;
+  padding: 30px;
+  background: rgba(32, 238, 200, 0.4);
+  border-radius: 20px;
+  h3 { // My todos
+    font-size: 22px;
+    border-bottom: 1px solid #e1f00f;
+    margin-top: 0;
+    span { // (3/9)とか
+      color: #ccc;
+      font-size: 16px;
+      font-weight: nomal;
+      margin-left: 5px;
+    }
+    button { // パージボタン
+      float: right;
+    }
+  }
+  ul {
+    li {
+      line-height: 1.5;
+      .cmd { // 削除ボタン
+        font-size: 14px;
+        cursor: pointer;
+        color: rgb(28, 24, 233);
+      }
+      .done { // ✔︎したタイトル
+        text-decoration: line-through;
+        color: #bbb;
+      }
+    }
+  }
+  input[type="text"] { // 入力欄の横
+    padding: 2px;
+    margin-right: 5px;
+  }
+  input[type="checkbox"] { // ✔️の横
+    margin-right: 10px;
+  }
+}
+// Todo管理アプリ React.js
+.todo {
+  @extend .vue;
+}
+
+// react.js
 // カウントアップ機能
 .reactcont {
   display: flex; // 中央
@@ -38,52 +87,9 @@
     }
   }
 }
-// Todo管理アプリ
-.todo { // 全体
-  width: 70%;
-  margin: 0 auto;
-  text-align: left;
-  p {
-    font-size: 22px;
-    margin-bottom: 0;
-    border-bottom: 1px solid #e1f00f;
-    padding: 16px 0;
-    button { // パージボタン
-      float: right;
-    }
-    span { // (3/9)とか
-      color: #ccc;
-      font-size: 16px;
-      font-weight: nomal;
-      margin-left: 5px;
-    }
-  }
-  ul {
-    padding: 0;
-    li {
-      line-height: 1.5;
-      .done { // ✔︎したタイトル
-        text-decoration: line-through;
-        color: #ccc;
-      }
-      .cmd { // 削除ボタン
-        font-size: 14px;
-        cursor: pointer;
-        color: rgb(233, 18, 233);
-        margin-left: 5px;
-      }
-    }
-  }
-}
-.todo input[type="checkbox"] { // ✔️の横
-  margin-right: 5px;
-}
-.todo input[type="text"] { // 入力欄の横
-  padding: 2px;
-  margin-right: 5px;
-}
-// 送信完了 React.js
-.submit-m {
+
+// React.js
+.submit-m { // 送信完了 
   padding: 20px 30px;
   background-color: rgba(48, 214, 184, 0.16);
   border: 1px dashed #dd4b11;
@@ -109,10 +115,10 @@
 }
 
 /* javaScript用 HelloWorld フォント */
-.js-hello {
-  color: palegoldenrod;
+.js-font {
+  color: rgb(170, 45, 243);
   font-size: 30px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
 }
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // リンクのホバー色
@@ -182,41 +188,45 @@ header {
   top: 0;
   z-index: 10;
   h1 {
-    font-size: 18px; // 20px以上だとスマホ画面で詰まる
-    /* padding-left: 5%; h1がはみ出るバグ */
+    font-size: 18px; // 20px以上だとスマホ画面で詰まる為
     margin: 0;
     cursor: pointer;
     @include acolor;
+    transition: all 300ms 0s ease; // ホバーの動き
+    &:hover {
+      font-size: 20px;
+    }
+    &:active {
+      color: green;
+      
+    }
   }
-  p {
-    margin: 0;
-    padding: 0;
-  }
-}
-// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-// ナビ
-nav {
-  a {
-    @include acolor;   
-  }
-  .menubtn { // ナビアイコン▼
-    // background: green;
-    color: white;
-    font-size: 25px;
-    text-align: right;
-  }
-  ul {
-    display: none;
-    padding: 0 20px;
-    padding-left: 0;
-    margin: 0;
-    background: rgba(34, 49, 52, 1);
-    border-radius: 0 0 20px 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    li {
-      margin-left: 15px;
-      /* font-size: 15px; */
-      /* line-height: 3; */
+  // ナビ
+  nav {
+    p { // ナビバー▼
+      // background: green;
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-size: 25px;
+      text-align: right;
+    }
+    ul {
+      display: none;
+      padding: 0 20px;
+      padding-left: 0;
+      margin: 0;
+      background: rgba(34, 49, 52, 1);
+      border-radius: 0 0 20px 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      li {
+        margin-left: 15px;
+        /* font-size: 15px; */
+        /* line-height: 3; */
+        a {
+          @include acolor;   
+        }
+      }
     }
   }
 }
@@ -243,7 +253,7 @@ footer {
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* メイン */
 main {
-  opacity: 0.8;
+  opacity: 0.9;
   line-height: 2;
 }
 main > section {
@@ -293,8 +303,8 @@ section > p {
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* 自己紹介 */
 .about {
-  margin: 20px auto;
   border-radius: 40px;
+  margin: 20px auto;
   justify-content: space-between;
   .front {
     p {
@@ -321,6 +331,10 @@ section > p {
     .hobby {
       text-align: center;
       padding: 0;
+      a {
+        @include acolor;
+        color: rgb(126, 77, 77);
+      }
     }
   }
 
@@ -427,7 +441,7 @@ section > p {
         padding-bottom: 50px;
       }
       a {
-        @include acolor;  
+        @include acolor;
         color: #e0ce68;
       }
     }
@@ -632,12 +646,14 @@ section > p {
 
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 @media (min-width: 640px)  {
-  .menubtn {
-    display: none;
-  }
-  .navlist {
-    display: block;
-    display: flex;
+  header nav {
+    p {
+      display: none;
+    }
+    ul {
+      display: block;
+      display: flex;
+    }
   }
   .helloworld {
     height: 715px;
@@ -718,14 +734,9 @@ section > p {
       padding: 0;
     }
   }
-}
-
-// React.js
-// 送信確認画面
-.submit-m {
-  margin: 20px 10%;
-}
-// Todo管理アプリ
-.todo {
-  width: 40%;
+  // React.js
+  // 送信確認画面
+  .submit-m {
+    margin: 20px 10%;
+  }
 }
