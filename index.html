@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="styles.css">
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Bootstrap CSS  体裁崩れあり-->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
   <!-- scroll Reveall -->
   <script src="https://unpkg.com/scrollreveal"></script>
   <!-- font-awesome -->
@@ -32,12 +30,11 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 
-
 <body>
   <!-- ヘッダー -->
   <header>
-    <h1 id="install" class="text-center bg-primary">しきっちワールド</h1>
-    <nav class="nav">
+    <h1 id="shikitti" class="text-center bg-primary">しきっちワールド</h1>
+    <nav>
       <p class="menubtn">
         <i class="far fa-caret-square-down"></i>
       </p>
@@ -59,31 +56,67 @@
       <button class="english">English</button>
       <button class="van">Vanish</button>
       <h1 id="wellcome" data-translation="Dotinstall">Hello World</h1>
-      <!-- Todoアプリ機能 -->
+
+      <!-- vue.js ここがUI-->
+      <div id="root0" class="vue">
+        <!-- dataからきた（大文字に） -->
+        <h3>
+          <button @click="purge">Purge</button>
+          {{ name }}
+          <span>({{ remaining.length }}/{{ todos.length }})</span>
+        </h3>
+        <!-- UIからdataへ（nameと結びつく） -->
+        <!-- vから始まる属性をディレクティブという -->
+        <p><input type="text" v-model="name"></p>
+
+        <!-- フォーム v-on -->
+        <form @submit.prevent="addItem">
+          <!-- 入力欄 -->
+          <input type="text" v-model="newItem">
+          <!-- 追加ボタン -->
+          <input type="submit" value="追加">
+        </form>
+
+        <!-- リスト_ディレクティブ（属性）：v-for -->
+        <ul>
+          <li v-for="(todo, index) in todos">
+            <!-- チェック -->
+            <input type="checkbox" v-model="todo.isDone">
+            <!-- タスク  v-bind  -->
+            <span :class="{done: todo.isDone}">{{ todo.title }}</span>
+            <!-- 削除ボタン -->
+            <span @click="deleteItem(index)" class="cmd">[x]</span>
+          </li>
+          <li v-show="!todos.length">Nothing to do, yeah!</li>
+        </ul>
+      </div>
+
+      <!-- React.js_Todoアプリ -->
       <div id="root1"></div>
+
     </section>
 
     <!-- 自己紹介 -->
     <section class="about">
       <h1 id="about">自己紹介</h1>
-      <p>自己紹介をします。</p>
+      <p id="myself">自己紹介をします。</p>
       <div class="frontback">
         <div class="front">
           <!-- 顔 -->
           <div class="icon">
-            <img src="img/face.jpeg"><br>
+            <img src="img/face3.jpeg"><br>
           </div>
           <!-- プロフィール -->
           <h2 id="profile" class="profile">プロフィール</h2>
           <p>しきっち / 1991年生まれ</p>
           <p>工学部卒</p>
           <!-- 詳細ボタン -->
-          <div class="btn" id="open">年表ボタン</div>
+          <div class="btn" id="open">年表</div>
           <!-- マスク -->
           <div id="mask" class="hidden"></div>
           <!-- モーダルウィンドウ -->
           <section id="modal" class="hidden">
-            <p>年表</p>
+            <p>経歴</p>
             <!-- テーブル -->
             <table border="1" width="" cellpadding="8" class="" bordercolor="#333333">
               <thead>
@@ -120,37 +153,35 @@
                   <tr>
                   <td>2020</td>
                   <td>転活</td>
-                  <td><font color="#ed1c24">プログラミング開始</font></td>
+                  <td><font color="#ed1c24">プログラミング独学</font></td>
                 </tr>                
               </tbody>
             </table>
             <!-- <div class="btn" id="close">閉じる</div> -->
           </section>
           <!-- 趣味 -->
-          <h2 id="hobby">趣味</h2>
-          <div class="hobby">
-            <p>パルクール<a href="http://instagram.com/shikitch_pk">
-              <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
-              </a>、写真、将棋</p>
-          </div>
-        </div>
-        <!-- スキル一覧 -->
-        <div class="back">
-          <h2 class="skill" id="skill">スキル<label class="like">
+          <h2 id="hobby">趣味<label class="like">
             <!-- いいねボタン -->
               <input type="checkbox">
               <i class="material-icons heart">favorite</i>
               <div class="ripple"></div>
             </label></h2>
+          <div class="hobby">
+            <p><a href="http://instagram.com/shikitch_pk">パルクール</a>・写真</p>
+          </div>
+        </div>
+        <!-- スキル一覧 -->
+        <div class="back">
+          <h2 class="skill" id="skill">スキル</h2>
           <!-- グラフ -->
-          <div class="chart" title="React、PHPを学習していきます">
+          <div class="chart" title="React, Vueを学習中です">
             <!-- ここの幅は比率。その為、divで囲った。 -->
             <canvas id="my_chart" width="1" height="1">
               Canvas not supported...
             </canvas>
           </div>
           <ul class="script">
-            <li>その他・・・Lightroom、Fresco</li>
+            <li>Adobe・・Premiere、Lightroom、Fresco</li>
           </ul>
           <!-- <script src="todolist.js"></script> -->
         </div>
@@ -161,7 +192,7 @@
     <!-- 特徴 -->
     <section class="feature">
       <h1 id="feat">特徴</h1>
-      <p>どうぞご覧ください。</p>
+      <p id="see1">どうぞご覧ください。</p>
       <div class="featlist">
         <section>
           <div class="pic">
@@ -180,7 +211,7 @@
           </div>
           <div class="tex">
             <h2>
-              <a id="member" href="line/line.html " target="_blank">チャット</a>
+              <a id="chat" href="tetris/tetris.html " target="_blank">テトリス</a>
             </h2>
             <p>こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！</p>
           </div>
@@ -204,7 +235,7 @@
     <!-- 地元紹介 -->
     <section class="city">
       <h1 id="town">地域紹介</h1>
-      <p>クリックしてご覧ください。</p>
+      <p id="see2">クリックしてご覧ください。</p>
       <ul class="slides">
         <li class="slide active">
           <img src="img/aich1.jpg" alt="">
@@ -231,7 +262,7 @@
           <img src="img/aich4.jpg">
           <div class="tex">
             <h2>小牧市</h2>
-            <p>工業都市として発展しました。近くには、たこ焼き屋さんやラーメン屋さん、アイスクリーム、トランポリン屋さんがあります。</p>
+            <p>工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。</p>
           </div>
         </li>
       </ul>
@@ -281,6 +312,11 @@
           </span>
         </a>
       </li>
+      <li><!-- instagram -->
+        <a href="http://instagram.com/shikitch_pk">
+          <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
+          </a>
+      </li>
       <li><!-- youtube -->
         <a href="https://www.youtube.com/channel/UCyydUwy-0x2Tc-FcCWBQncw?view_as=subscriber">
           <span class="faa-parent animated-hover">
@@ -314,11 +350,11 @@
       return !todo.isDone;
     });
     return ( // 削除機能だからpurgeがとる引数はないってこと？？
-      <p>
+      <h3>
         <button onClick={() => props.purge()}>Purge</button>
-        My Todos
+        React Todos
         <span>({remaining.length}/{props.todos.length})</span>
-      </p>
+      </h3>
     );
   }
   // li要素 本文（li要素も拡張しやすいようにコンポーネントにしている）
@@ -376,7 +412,7 @@
     return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
   }
 
-  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
   // ここでデータを一元管理する
   class Todo extends React.Component {
     constructor() {
@@ -386,6 +422,7 @@
         item: '' // テキスト入力
       };
       // 何のためにここ書いている？？
+       // state使う時にかく。各メソッドに渡す。
       this.checkTodo = this.checkTodo.bind(this);
       this.deleteTodo = this.deleteTodo.bind(this);
       this.updateItem = this.updateItem.bind(this);
@@ -460,7 +497,7 @@
     }
     // Local Strageを使って永続化
     // コンポーネントが更新される際にデータを保存する。
-    componentDidUpdate() { // keyはtodos、stateの値を保持
+    componentDidUpdate() { // keyはtodos、JSON形式にてstateの値を保持
       localStorage.setItem('todos', JSON.stringify(this.state.todos));
     }
     // コンポーネントがマウントされる際にLocalStorageにデータを読み込む。
@@ -470,7 +507,7 @@
       });
     }
 
-    render() {
+    render() { // JSXで
       return (
         <div className="todo">
           <TodoHeader // タイトル + リスト数  コンポーネント
@@ -577,8 +614,8 @@
   // お問い合わせフォーム
   class Conta extends React.Component {
     constructor(props) { // なぜpropsが入るのか？
-      super(props);
-      this.state = { // 初期値
+      super(props); // superとは、React.Componentのこと。その初期化処理をここで行う。
+      this.state = { // 初期値 reactが管理
         isSubmitted: false,
         name: "", // 入力値を管理（まだ入力不可）
         hasNameError: true, // 入力値が空かどうかの状態を管理
@@ -671,14 +708,14 @@
             <li>「<span>{this.state.value}</span>」</li>
             <p>内容</p>
             <li>「<span>{this.state.content}</span>」</li>
-            <div className="checked" id="">
+            <div className="checked">
               <input type="submit" value="確認完了" className="submit"/>
             </div>
           </ul>
         ); 
       } else { // falseならば、
         contactForm = ( // 元文
-          <form action="" onSubmit={() => {this.handleSubmit()}}>
+          <form onSubmit={() => {this.handleSubmit()}}>
             <div className="form">
               <div className="frontform">
                 <label>お名前（必須）  <input type="text" className="textline" placeholder="大阪太郎"
@@ -687,16 +724,16 @@
                   /> 
                 </label>
                 {NameError}
-                  
                 <p className="age">
                   <label htmlFor="age">年齢（任意）   </label>
                   <select name="age" id="age" className="textline"
                   value={this.state.age}
                   onChange={(event) => {this.handleAge(event)}}>
                   <option value="？歳">年齢が未選択です。</option>
-                  <option value="30-34歳">30-34歳</option>
-                  <option value="35-39歳">35-39歳</option>
-                  <option value="40歳-">40歳-</option>
+                  <option value="16-25歳">16-25歳</option>
+                  <option value="26-35歳">26-35歳</option>
+                  <option value="36-45歳">36-45歳</option>
+                  <option value="46歳-">46歳-</option>
                   </select>
                 </p>
                 {AgeError}
@@ -743,7 +780,10 @@
   })();
   </script>
 
-  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+  <!-- vue.js 本番バージョン、サイズと速度のために最適化 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="vue.js"></script>
   <!-- アニメーション -->
   <script src="jQuery.js"></script>
   <!-- scrollReveal機能 -->
@@ -755,6 +795,5 @@
   <!-- chart.js読み込み -->
   <script src="chart.js"></script>
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-   <!-- <script src="trash/trash.html"></script> -->
 </body>
 </html>
