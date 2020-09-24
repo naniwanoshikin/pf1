@@ -49,13 +49,14 @@
   let nodeList1 = document.querySelectorAll('.pic > img'); // 写真
   let nodeArray1 = [ // ここにAll入れることはできない？ // React.js
     document.querySelector('#root1'),
+    // document.querySelector('#root1'),
     document.querySelector('#root2'),
     document.querySelector('#conta'),
   ];
 
   // 実行（対象、設定名）
-  ScrollReveal().reveal(node1, node);
-  ScrollReveal().reveal(nodeList1, imgSlide);
-  ScrollReveal().reveal(nodeArray1, slideUp);
+  ScrollReveal().reveal(node1, node); // グラフ
+  // ScrollReveal().reveal(nodeList1, imgSlide);
+  ScrollReveal().reveal(nodeArray1, slideUp); // React
 
 }
