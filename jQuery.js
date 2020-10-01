@@ -36,8 +36,8 @@ $('.menubtn').click(function() { // クリックしたとき、
 
 // [Vanish]ボタン
 $('.van').click(function() {
-  let p = $('<h2 id="vani" style="font-size: 24px;">').text('Hello World!').addClass('vanish'); // vanish
-  $('#root1').after(p); // 前に挿入
+  let tag = $('<p id="vani" data-vani="English World!">').text('Hello World!').addClass('vcolor'); // vanish
+  $('.javalist').after(tag); // idの前に挿入
 });
 // ONメソッド：読み込まれた時に存在していない要素を処理
 $('body').on('click', '.vanish', function() { //clickするとvanishする機能
