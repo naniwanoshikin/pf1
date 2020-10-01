@@ -3,7 +3,7 @@
 <head>
   <meta charaset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>しきたにワールド</title>
+  <title>しきっちワールド</title>
   <meta name="description" content="SHIKITTI WORLDです">
   <!-- ファビコン -->
   <link rel="icon" href="img/nezcon.ico">
@@ -39,7 +39,7 @@
         <i class="far fa-caret-square-down"></i>
       </p>
       <ul class="navlist">
-        <li><a href="#about" id="nav1" data-all="pro">自己紹介</a></li>
+        <li><a href="#about" id="nav1">自己紹介</a></li>
         <li><a href="#feat" id="nav2">特徴</a></li>
         <li><a href="#town" id="nav3">地域紹介</a></li>
         <li><a href="#contact" id="nav4">お問い合わせ</a></li>
@@ -52,48 +52,31 @@
   <main>
     <!-- ようこそ -->
     <section class="helloworld">
-      <button class="pindex">Count</button>
       <button class="english">English</button>
+      <button class="pindex">Count</button>
       <button class="van">Vanish</button>
-      <h1 id="wellcome" data-translation="Dotinstall">Hello World</h1>
-
-      <!-- vue.js ここがUI-->
-      <div id="root0" class="vue">
-        <!-- dataからきた（大文字に） -->
-        <h3>
-          <button @click="purge">Purge</button>
-          {{ name }}
-          <span>({{ remaining.length }}/{{ todos.length }})</span>
+      <h1 id="wellcome">Hello World</h1>
+      <div class="javalist">
+        <h3>MyTodos<span class="count">( 3 /3 ) </span>
+          <button class="button1">Erase</button>
+          <button class="sort">Sort</button>
         </h3>
-        <!-- UIからdataへ（nameと結びつく） -->
-        <!-- vから始まる属性をディレクティブという -->
-        <p><input type="text" v-model="name"></p>
-
-        <!-- フォーム v-on -->
-        <form @submit.prevent="addItem">
-          <!-- 入力欄 -->
-          <input type="text" v-model="newItem">
-          <!-- 追加ボタン -->
-          <input type="submit" value="追加">
+        <div class="cbx">
+          <input type="checkbox" value="Sports">運動
+          <input type="checkbox" value="Reading">読書
+          <input type="checkbox" value="SNS">SNS
+          <button class="button2">Order</button>
+          <button class="button3">Check</button>
+        </div>
+        <form>
+          <input type="text" class="textline">↩︎
         </form>
-
-        <!-- リスト_ディレクティブ（属性）：v-for -->
-        <ul>
-          <li v-for="(todo, index) in todos">
-            <!-- チェック -->
-            <input type="checkbox" v-model="todo.isDone">
-            <!-- タスク  v-bind  -->
-            <span :class="{done: todo.isDone}">{{ todo.title }}</span>
-            <!-- 削除ボタン -->
-            <span @click="deleteItem(index)" class="cmd">[x]</span>
-          </li>
-          <li v-show="!todos.length">Nothing to do, yeah!</li>
-        </ul>
+        <ol class="tds">  <!-- e.currentTarget -->
+          <li><span class="td">動画を見る</span><span class="delete">[x]</span></li> <!-- e.target -->
+          <li><span class="td">画像を見る</span><span class="delete">[x]</span></li>
+          <li><span class="td">絵をかく</span><span class="delete">[x]</span></li>
+        </ol>
       </div>
-
-      <!-- React.js_Todoアプリ -->
-      <div id="root1"></div>
-
     </section>
 
     <!-- 自己紹介 -->
@@ -109,7 +92,6 @@
           <!-- プロフィール -->
           <h2 id="profile" class="profile">プロフィール</h2>
           <p>しきっち / 1991年生まれ</p>
-          <p>工学部卒</p>
           <!-- 詳細ボタン -->
           <div class="btn" id="open">年表</div>
           <!-- マスク -->
@@ -118,7 +100,7 @@
           <section id="modal" class="hidden">
             <p>経歴</p>
             <!-- テーブル -->
-            <table border="1" width="" cellpadding="8" class="" bordercolor="#333333">
+            <table border="1" width="320" cellpadding="6" bordercolor="#333333">
               <thead>
                 <tr bgcolor="ffe0b6">
                   <th>年</th>
@@ -140,41 +122,42 @@
                   <td>空手始めました</td>
                   <tr>
                   <td>2012</td>
-                  <td>研究</td>
-                  <td>柱の地震解析</td>
+                  <td>解析</td>
+                  <td>橋脚の地震時挙動</td>
                   <tr>
                   <td>2016</td>
                   <td>業務</td>
-                  <td>自動車部品の設計検討</td>
+                  <td>自動車部品の設計</td>
                   <tr>
                   <td>2017</td>
                   <td>哲学</td>
-                  <td>パルクール始めました</td>
+                  <td class="hobby"><a href="http://instagram.com/shikitch_pk">パルクール</a>始めました</td>
                   <tr>
                   <td>2020</td>
-                  <td>転活</td>
-                  <td><font color="#ed1c24">プログラミング独学</font></td>
-                </tr>                
+                  <td>独学</td>
+                  <td><font color="#ed1c24">プログラミング</font>始めました</td>
+                </tr>
               </tbody>
             </table>
             <!-- <div class="btn" id="close">閉じる</div> -->
           </section>
           <!-- 趣味 -->
-          <h2 id="hobby">趣味<label class="like">
+          <h2 id="hobby">趣味
             <!-- いいねボタン -->
+            <label class="like">
               <input type="checkbox">
               <i class="material-icons heart">favorite</i>
               <div class="ripple"></div>
             </label></h2>
-          <div class="hobby">
-            <p><a href="http://instagram.com/shikitch_pk">パルクール</a>・写真</p>
+          <div>
+            <p>鉄棒・写真</p>
           </div>
         </div>
         <!-- スキル一覧 -->
         <div class="back">
           <h2 class="skill" id="skill">スキル</h2>
           <!-- グラフ -->
-          <div class="chart" title="React, Vueを学習中です">
+          <div class="chart" title="React, JavaScriptを学習中です">
             <!-- ここの幅は比率。その為、divで囲った。 -->
             <canvas id="my_chart" width="1" height="1">
               Canvas not supported...
@@ -196,29 +179,29 @@
       <div class="featlist">
         <section>
           <div class="pic">
-            <img src="cafe/img/cafe1.jpg">
+            <img src="cafe/img/cafe1.JPG" alt="写真1">
           </div>
           <div class="tex">
             <h2>
               <a id="cafe" href="cafe/cafe.html" target="_blank">カフェ</a>
             </h2>
-            <p>Bootstrapを使ったカフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！</p>
+            <p id="site1">カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！カフェサイトです！！！</p>
           </div>
         </section>
         <section>
           <div class="pic">
-            <img src="img/aich11.jpg" alt="">
+            <img src="img/aich6.jpeg" alt="写真2">
           </div>
           <div class="tex">
             <h2>
-              <a id="chat" href="tetris/tetris.html " target="_blank">テトリス</a>
+              <a id="chat" href="tetris/tetris.html" target="_blank">テトリス</a>
             </h2>
             <p>こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！こんばんは！！</p>
           </div>
         </section>
         <section>
           <div class="pic">
-            <img src="img/aich15.jpg" alt="">
+            <img src="img/aich7.JPG" alt="写真3">
           </div>
           <div class="tex">
             <h2>
@@ -238,20 +221,20 @@
       <p id="see2">クリックしてご覧ください。</p>
       <ul class="slides">
         <li class="slide active">
-          <img src="img/aich1.jpg" alt="">
+          <img src="img/aich1.JPG">
           <div class="tex">
             <h2>一宮市</h2>
             <p>こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！</p>
           </div>
           </li>
         <li class="slide">
-          <img src="img/aich2.jpg">
+          <img src="img/aich2.JPG">
           <div class="tex">
             <h2>岩倉市</h2>
             <p>こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！</p>
           </div>
         <li class="slide">
-          <img src="img/aich3.jpg">
+          <img src="img/aich3.JPG">
           <div class="tex">
             <h2>江南市</h2>
             <p>こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！こんにちは！！！</p>
@@ -259,7 +242,7 @@
         </div>
         </li>
         <li class="slide">
-          <img src="img/aich4.jpg">
+          <img src="img/aich4.JPG">
           <div class="tex">
             <h2>小牧市</h2>
             <p>工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。工業都市として発展しました。</p>
@@ -278,7 +261,7 @@
         </div>
       </div>
       <!-- カウントアップ機能 -->
-      <div id="root2"></div>
+      <div id="root1"></div>
       <!-- <script src="todolist.js"></script> -->
     </section>
 
@@ -291,7 +274,7 @@
       </h1>
       <p class="free" id="free">お気軽にご連絡ください。</p>
       <!-- フォーム React.js-->
-      <div id="conta"></div>
+      <div id="root2"></div>
     </section>
   </main>
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
@@ -301,26 +284,26 @@
       <li><!-- github -->
         <a href="https://github.com/naniwanoshikin/shikichanpower.github.io/blob/master/index.html" target="_blank">
           <span class="faa-parent animated-hover">
-            <i class="fab fa-github fa-lg faa-tada"></i>
+            <i class="fab fa-github fa-2x faa-tada"></i>
           </span>
         </a>
       </li>
       <li><!-- twitter -->
-        <a class="share" href="https://twitter.com/intent/tweet?text=学習方法で困っている方々必見&url=https://dotinstall.com/lessons&related=@power_of_shikin" target="_blank" rel="nofollow">
-          <span class="faa-parent animated-hover">           
-            <i class="fab fa-twitter fa-lg faa-passing"></i>
+        <a class="share" href="https://twitter.com/intent/tweet?text=必見！フォローしましょう&url=https://myportfolio-80107.web.app  @power_of_shikin" target="_blank" rel="nofollow">
+          <span class="faa-parent animated-hover">
+            <i class="fab fa-twitter fa-2x faa-passing"></i>
           </span>
         </a>
       </li>
       <li><!-- instagram -->
         <a href="http://instagram.com/shikitch_pk">
-          <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-lg fa-flip-horizontal  faa-spin"></i></span>
+          <span class="faa-parent animated-hover"><i class="fab fa-instagram fa-2x fa-flip-horizontal  faa-spin"></i></span>
           </a>
       </li>
       <li><!-- youtube -->
         <a href="https://www.youtube.com/channel/UCyydUwy-0x2Tc-FcCWBQncw?view_as=subscriber">
           <span class="faa-parent animated-hover">
-            <i class="fab fa-youtube fa-lg faa-ring"></i>
+            <i class="fab fa-youtube fa-2x faa-ring"></i>
           </span>
         </a>
       </li>
@@ -329,213 +312,22 @@
   </footer>
 
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+  <!-- アニメーション -->
+  <script src="jQuery.js"></script>
+  <!-- scrollReveal機能 -->
+  <script src="scroll.js"></script>
+  <!-- 英語版表記 -->
+  <script src="english.js"></script>
+  <!-- Todoリスト -->
+  <script src="todos.js"></script>
+  <!-- モーダル機能 -->
+  <script src="modal.js"></script>
+  <!-- chart.js読み込み -->
+  <script src="chart.js"></script>
   <!-- React babel 読み込み -->
+  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   <script type="text/babel">
-  (() => { // 即時関数
-
-  //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  // Todo管理アプリ機能
-
-  // li要素の中身を初期表示状態
-  const todos = [
-    // {id: 0, title: 'Task 0', isDone: false},
-    // {id: 1, title: 'Task 1', isDone: false},
-    // {id: 2, title: 'Task 2', isDone: true},
-  ];
-
-  // パージ部の本文
-  function TodoHeader(props) {
-    // 未完了のli要素だけを取得
-    const remaining = props.todos.filter(todo=>{
-      return !todo.isDone;
-    });
-    return ( // 削除機能だからpurgeがとる引数はないってこと？？
-      <h3>
-        <button onClick={() => props.purge()}>Purge</button>
-        React Todos
-        <span>({remaining.length}/{props.todos.length})</span>
-      </h3>
-    );
-  }
-  // li要素 本文（li要素も拡張しやすいようにコンポーネントにしている）
-  function TodoItem(props) { // stateを保持しないので関数で作る
-    return( // onChangeを設定し、親クラスのstateを変更し、親へ処理をゆずっていく。props.checkTodoに引数props.todoを渡す。
-      <li>
-        <label>
-          <input type="checkbox"
-            checked={props.todo.isDone}
-            onChange={() => props.checkTodo(props.todo)}
-          />
-          <span className={props.todo.isDone ? 'done' : ''}>
-            {props.todo.title}
-          </span>
-          <span className="cmd" // 削除ボタン
-            onClick={() => {props.deleteTodo(props.todo)}}>[x]
-          </span>
-        </label>
-      </li>
-    );
-  }
-  // ul要素 本文
-  function TodoList(props) {
-    const todos = props.todos.map(todo => { // 渡されたpropsをmapで処理
-      return(
-        <TodoItem
-          todo={todo} // ★propsのtodo属性として子へ渡す。
-          key={todo.id}
-          checkTodo={props.checkTodo} // 親へ渡す。
-          deleteTodo={props.deleteTodo} // 親へ渡す。
-          />
-      );
-    });
-    return( // 文字があれば{todos}、なければNothing
-      <ul>
-        {props.todos.length ? todos: <li> Nothing to do</li>}
-      </ul>
-    );
-  }
-
-  // propsとしてこちらに値が渡される。UI変更はsetStateのみで行う為、値を入力できない。その為、onChangeイベントを設定し、Todoコンポーネントで実装していく！
-  // 入力欄の本文
-  function TodoForm(props) {
-    return(
-      <form onSubmit={props.addTodo}>
-        <input type="text" value={props.item}
-          onChange={props.updateItem}
-        />
-        <input type="submit" value="追加"/>  
-      </form>
-    );
-  }
-  // li要素のidを生成
-  function getUniqueId() { // 現在時刻-乱数 36進数
-    return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
-  }
-
-  // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-  // ここでデータを一元管理する
-  class Todo extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        todos: todos, // todosというキー：todosの値
-        item: '' // テキスト入力
-      };
-      // 何のためにここ書いている？？
-       // state使う時にかく。各メソッドに渡す。
-      this.checkTodo = this.checkTodo.bind(this);
-      this.deleteTodo = this.deleteTodo.bind(this);
-      this.updateItem = this.updateItem.bind(this);
-      this.addTodo = this.addTodo.bind(this);
-      this.purge = this.purge.bind(this);
-    }
-
-    purge() {
-      if(!confirm('are you sure?')) { // OKなら
-        return; // 削除
-      }
-      const todos = this.state.todos.filter(todo => {
-        return !todo.isDone; // チェックされた要素を対象に
-      });
-      this.setState({
-        todos: todos // 新しく作ったtodosを更新
-      });
-    }
-    // 共通項：定義はどれもthis.state.todos.~と書いている。機能をここに書いていく。
-    // 削除するときに、
-    deleteTodo(todo) {
-      if(!confirm('are you sure?')) { // OKなら
-        return; // 削除
-      }
-       // 今回はオブジェクトのプロパティまではいじらないのでslice
-      const todos = this.state.todos.slice(); // 文字列
-      const pos = this.state.todos.indexOf(todo); // 選択したインデックス
-      todos.splice(pos, 1); // pos番目から1つの要素を削除。
-      this.setState({
-        todos: todos // これが新しく作ったtodosだよ。
-      });
-    }
-    // チェックON/OFF管理するときに、
-    checkTodo(todo) { // onChangeできたこのtodoをindexOfのtodoに渡す。
-      // stateが変更できないので全てのpropsの値を持つtodosのコピーを作る。1つ１つの要素をtodoとして処理。値を変更するため、mapを用いる。
-      const todos = this.state.todos.map(todo => {
-        return {id: todo.id, title: todo.title, isDone: todo.isDone};
-      });
-      // この中で何番目のidDoneを変更すればいいか
-      const pos = this.state.todos.map(todo => { // pos番目とは、
-        return todo.id; // idプロパティの配列の中で、
-      }).indexOf(todo.id); // 渡されてきたtodo.idと同じ番号のことで、
-       // その番のisDoneを反転する。（チェックボタンおす）
-      todos[pos].isDone = ! todos[pos].isDone;
-      this.setState({ // 値を変更
-        todos: todos // これが新しく作ったtodosだよ。
-      });
-    }
-    // テキスト入力値の管理したときに、
-    updateItem(e) { // formの値はイベントオブジェクトから取得できるのでeを設定。ここってeventでもいい？
-      this.setState({
-        item: e.target.value
-      });
-    }
-    // ボタン追加したときに、
-    addTodo(e) { // 画面が遷移しないようにeをつける
-      e.preventDefault();
-      if(this.state.item.trim() === '') { // trim???????
-        return;
-      }
-      const item = { // 追加したいtodosオブジェクト
-        id: getUniqueId(),
-        title: this.state.item, // テキストの名前
-        isDone: false
-      };
-      const todos = this.state.todos.slice(); // 新しい文字列
-      todos.push(item); // todosに対して上記itemを追加
-      this.setState({
-        todos: todos,
-        // item: ''
-      });
-    }
-    // Local Strageを使って永続化
-    // コンポーネントが更新される際にデータを保存する。
-    componentDidUpdate() { // keyはtodos、JSON形式にてstateの値を保持
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-    // コンポーネントがマウントされる際にLocalStorageにデータを読み込む。
-    componentDidMount() {
-      this.setState({ // todosの中身をLocalStorageの中身にしたい
-        todos: JSON.parse(localStorage.getItem('todos')) || [] // 上手くいかなければ空配列にしてあげる。
-      });
-    }
-
-    render() { // JSXで
-      return (
-        <div className="todo">
-          <TodoHeader // タイトル + リスト数  コンポーネント
-          // todos属性の値を子へ渡す
-            todos={this.state.todos} // Todoの数
-            purge={this.purge} // 一斉削除メソッド
-          />
-          <TodoForm // 入力値の各属性
-            item={this.state.item} // テキスト
-            updateItem={this.updateItem} // 入力管理メソッド
-            addTodo={this.addTodo} // 追加メソッド
-          />
-          <TodoList // リスト内の各属性
-            todos={this.state.todos} // id, title, idDone
-            // 子より受け取ったメソッド
-            checkTodo={this.checkTodo} // チェックメソッド
-            deleteTodo={this.deleteTodo} // 削除メソッド
-            />
-        </div>
-      );
-    }
-  }
-
-  ReactDOM.render( // JS内
-  <Todo/>, // コンポーネントクラス
-    document.getElementById('root1')
-  );
-
+    (() => { // 即時関数
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   //  カウントアップ機能
   function Counter(props) {
@@ -554,7 +346,7 @@
          countUp={props.countUp}
         />
       );
-    }); 
+    });
     return (
       <ul>
         {counters}
@@ -593,12 +385,12 @@
 
     render() {
       return (
-        <div className="reactcont">          
+        <div className="reactcont">
           <div>{this.state.total}{name.toUpperCase()}</div>
           <CounterList
             countUp={this.countUp}
             counters={this.state.counters}
-          />          
+          />
         </div>
       );
     }
@@ -607,19 +399,19 @@
 
   ReactDOM.render(
   <App/>,
-    document.getElementById('root2')
+    document.getElementById('root1')
   );
-  
+
   //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
   // お問い合わせフォーム
   class Conta extends React.Component {
     constructor(props) { // なぜpropsが入るのか？
-      super(props); // superとは、React.Componentのこと。その初期化処理をここで行う。
-      this.state = { // 初期値 reactが管理
-        isSubmitted: false,
-        name: "", // 入力値を管理（まだ入力不可）
-        hasNameError: true, // 入力値が空かどうかの状態を管理
-        content: "",
+      super(props); // superとは、React.Componentのこと。初期化処理をここで行う。
+      this.state = { // 初期値を管理
+        isSubmitted: false,  // 送信状態
+        name: "", // 入力値（まだ入力不可）
+        hasNameError: true, // 入力状態
+        content: "", // 内容の値
         hasContentError: true,
         age: '非公表', // selectした値
         hasAgeError: true,
@@ -628,49 +420,48 @@
       };
     }
 
-    // JSXに書いているメソッドが呼び出され処理、プロパティを更新する
-    handleSubmit() { // formが送信された場合、
+    // JSXに書いているメソッドが呼び出され処理、プロパティを更新
+    handleSubmit() { // formが送信された時、
       this.setState({isSubmitted: true}); // 初期値がtrueになる
     }
-    handleName(event) { // 名前が入力された場合、
-      const inputValue = event.target.value; // 入力値の、
+    handleName(e) { // 名前を入力した時、
+      const inputValue = e.target.value; // 入力した値
       // const isEmpty = inputValue === "";
       this.setState({
-        name: inputValue, // ここを書かないと値を入力できない
-        hasNameError: inputValue === "", // エラー文字が消える
+        name: inputValue, // を表示
+        hasNameError: inputValue === "", // 空ならば
       });
     }
-    handleContent(event) { // 内容が入力された場合、
-      const inputValue = event.target.value;
+    handleContent(e) { // 内容を入力した時、
       this.setState({
-        content: inputValue,
-        hasContentError: inputValue === "",
+        content: e.target.value,
+        hasContentError: e.target.value === "",
       });
     }
-    handleAge(event) { // 年齢が選択された場合、
+    handleAge(e) { // 年齢を選択した時、
       this.setState({
-        age: event.target.value,
-        hasAgeError: event.target.value === "",
+        age: e.target.value,
+        hasAgeError: e.target.value === "",
       });
     }
-    handleMail(event) { // ラジオボタンの値が選択された場合、
+    handleMail(e) { // ラジオボタンを選択した時、
       this.setState({
-        value: event.target.value,
-        hasMailError: event.target.value === "",
+        value: e.target.value,
+        hasMailError: e.target.value === "",
       });
     }
 
     render() {
-      // JSXに書いている文の内容について条件分岐
-      let NameError; // お名前
-      if(this.state.hasNameError) { // propsが真（空になった）なら、
-        NameError = ( // JSX文は下記が表示される。
+      // JSXに書いている文の内容について条件分岐（props）
+      let NameError; // お名前エラー
+      if(this.state.hasNameError) { // （propsが空の時）
+        NameError = (
           <p className="error-message">
             ※お名前を入力してください
           </p>
         );
       }
-      let ContentError; // お問い合せ内容
+      let ContentError; // お問い合せ内容エラー
       if(this.state.hasContentError) {
         ContentError = (
           <p className="error-message">
@@ -678,7 +469,7 @@
           </p>
         );
       }
-      let AgeError; // 年齢の選択
+      let AgeError; // 年齢の選択エラー
       if(this.state.hasAgeError) {
         AgeError = (
           <p className="error-message">
@@ -686,7 +477,7 @@
           </p>
         );
       }
-      let MailError; // 連絡方法の選択
+      let MailError; // 連絡方法の選択エラー
       if(this.state.hasMailError) {
         MailError = (
           <p className="error-message">
@@ -694,11 +485,11 @@
           </p>
         );
       }
-      let contactForm; // このpropsが、
-      if(this.state.isSubmitted) { // trueならば、
+      let contactForm; // フォーム状態
+      if(this.state.isSubmitted) {
         contactForm = ( // 送信後の画面
           <ul className="submit-m">
-            <h4>下記にて受付致しました。後日ご案内いたします。</h4>
+            <h4>下記にて受付致しました。</h4>
             <hr/>
             <p>お名前</p>
             <li>「<span>{this.state.name}</span>」さん</li>
@@ -708,11 +499,11 @@
             <li>「<span>{this.state.value}</span>」</li>
             <p>内容</p>
             <li>「<span>{this.state.content}</span>」</li>
-            <div className="checked">
+            <form className="checked">
               <input type="submit" value="確認完了" className="submit"/>
-            </div>
+            </form>
           </ul>
-        ); 
+        );
       } else { // falseならば、
         contactForm = ( // 元文
           <form onSubmit={() => {this.handleSubmit()}}>
@@ -720,8 +511,8 @@
               <div className="frontform">
                 <label>お名前（必須）  <input type="text" className="textline" placeholder="大阪太郎"
                   value={this.state.name} // 入力値
-                  onChange={(event) => {this.handleName(event)}}
-                  /> 
+                  onChange={(e) => {this.handleName(e)}} // eは値
+                  />
                 </label>
                 {NameError}
                 <p className="age">
@@ -741,7 +532,7 @@
                   <legend>連絡方法（任意）</legend>
                   <label><input type="radio" name="conect" value="メール"
                     onChange={() => {this.handleMail(event)}}/>メール</label>
-                  <label><input type="radio" name="conect"value="電話" 
+                  <label><input type="radio" name="conect"value="電話"
                     onChange={() => {this.handleMail(event)}}/>電話</label>
                   <label><input type="radio" name="conect" value="メールまたは電話"
                     onChange={() => {this.handleMail(event)}}/>どちらでも可</label>
@@ -751,16 +542,15 @@
 
               <div className="backform">
                 <p htmlFor="naiyo" className="naiyo">お問い合わせ内容（必須）</p>
-                <textarea className="textline" id="naiyo" cols="40" rows="10" maxLength="500" placeholder="（500字まで）" 
+                <textarea className="textline" id="naiyo" cols="36" rows="10" maxLength="500" placeholder="（500字まで）"
                 value={this.state.content}
-                onChange={(event) => {this.handleContent(event)}}
+                onChange={(e) => {this.handleContent(e)}}
                 />
                 {ContentError}
               </div>
             </div>
-
             <div className="" id="sub">
-              <input type="submit" value="送信する" className="submit"/>
+              <input type="submit" value="送信" className="submit"/>
             </div>
           </form>
         );
@@ -774,26 +564,12 @@
   }
   ReactDOM.render( // JS内
   <Conta/>, // コンポーネントクラス
-    document.getElementById('conta')
+    document.getElementById('root2')
   );
 
   })();
   </script>
-
   <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
-  <!-- vue.js 本番バージョン、サイズと速度のために最適化 -->
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="vue.js"></script>
-  <!-- アニメーション -->
-  <script src="jQuery.js"></script>
-  <!-- scrollReveal機能 -->
-  <script src="scroll.js"></script>
-  <!-- 英語版表記 -->
-  <script src="english.js"></script>
-  <!-- モーダル機能 -->
-  <script src="modal.js"></script>
-  <!-- chart.js読み込み -->
-  <script src="chart.js"></script>
-  <!-- ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ -->
+
 </body>
 </html>
