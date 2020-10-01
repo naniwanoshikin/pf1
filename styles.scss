@@ -1,57 +1,63 @@
 @charset "utf-8";
 /* small screen */
 
-
-// Todo管理アプリ Vue.js
-.vue {
-  width: calc(180px + 20%);
+// Todoリスト JavaScript
+.javalist {
+  background: linear-gradient( rgba(204, 238, 11, 0.4),  rgba(92, 12, 196, 0.3));
+  max-width: 320px;
   margin: 10px auto;
-  padding: 30px;
-  background: rgba(32, 238, 200, 0.4);
+  padding: 25px;
   border-radius: 20px;
   h3 { // My todos
-    font-size: 22px;
+    color: black;
     border-bottom: 1px solid #e1f00f;
     margin-top: 0;
-    span { // (3/9)とか
-      color: #ccc;
+    margin-bottom: 10px;
+    span { // (3 /3)とか
+      color: rgb(27, 219, 209);
       font-size: 16px;
       font-weight: nomal;
       margin-left: 5px;
     }
-    button { // パージボタン
-      float: right;
+  }
+  form {
+    margin-top: 10px;
+    text-align: center;
+    .textline { // テキスト枠
+      margin-right: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      width: 50%;
     }
   }
-  ul {
+  .cbx {
+    padding-left: 10px;
+  }
+  ol { // リスト
+    // width: calc(50px + 60%);
+    padding: 10px 50px;
+    padding-right: 0;
+    margin-bottom: 0;
+    border-radius: 10px;
+    background: radial-gradient( rgba(236, 182, 5, 0.4), rgba(196, 50, 13, 1) );
     li {
-      line-height: 1.5;
-      .cmd { // 削除ボタン
-        font-size: 14px;
+      span {
         cursor: pointer;
-        color: rgb(28, 24, 233);
       }
-      .done { // ✔︎したタイトル
+      .td.done {
         text-decoration: line-through;
         color: #bbb;
       }
+      .delete {
+        padding-right: 30px;
+        color: rgb(14, 10, 241);
+        float: right;
+      }
     }
   }
-  input[type="text"] { // 入力欄の横
-    padding: 2px;
-    margin-right: 5px;
-  }
-  input[type="checkbox"] { // ✔️の横
-    margin-right: 10px;
-  }
 }
-// Todo管理アプリ React.js
-.todo {
-  @extend .vue;
-}
-
-// react.js
-// カウントアップ機能
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// react.js カウントアップ
 .reactcont {
   display: flex; // 中央
   align-items: center; // 中央
@@ -88,37 +94,19 @@
   }
 }
 
-// React.js
-.submit-m { // 送信完了 
-  padding: 20px 30px;
-  background-color: rgba(48, 214, 184, 0.16);
-  border: 1px dashed #dd4b11;
-  border-radius: 30px;
-  text-align: left;
-  h4 {
-    margin: 0 auto;
-    text-align: center;
-  }
-  p {
-    margin-bottom: 0;
-    text-decoration: underline;
-  }
-  span {
-    color: #883ddd;
-    font-size: 20px;
-  }
-}
-.error-message { // 未入力
-  color: #ff4d75;
-  margin: 0 auto 10px;
-  text-align: left;
-}
-
-/* javaScript用 HelloWorld フォント */
-.js-font {
-  color: rgb(170, 45, 243);
+/* javaScript用 [English]ボタン */
+.js1 {
+  color: rgb(214, 18, 240);
   font-size: 30px;
   letter-spacing: 0.2em;
+}
+.vcolor {
+  color: yellow;
+  font-size: 24px;
+}
+.ecolor {
+  color: rgb(68, 245, 52);
+  font-size: 30px;
 }
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 // リンクのホバー色
@@ -127,9 +115,6 @@
   &:hover {
     color: rgb(78, 190, 235);
   }
-}
-a {
-  text-decoration: none;
 }
 // 写真と説明
 @mixin imgcss {
@@ -163,7 +148,7 @@ h1 {
   letter-spacing: 0.25em;
 }
 h2 {
-  font-size: 25px;
+  font-size: 22px;
   text-align: center;
   letter-spacing: 0.15em;
   margin: 20px 10% 20px;
@@ -172,7 +157,9 @@ h2 {
 ul {
   list-style: none;
 }
-
+a {
+  text-decoration: none;
+}
 // ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* ヘッダー */
 header {
@@ -198,7 +185,6 @@ header {
     }
     &:active {
       color: green;
-      
     }
   }
   // ナビ
@@ -216,7 +202,6 @@ header {
       padding: 0 20px;
       padding-left: 0;
       margin: 0;
-      background: rgba(34, 49, 52, 1);
       border-radius: 0 0 20px 20px;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       li {
@@ -263,12 +248,12 @@ main > section {
   padding-bottom: 50px;
 }
 section > h1 {
-  font-size: 32px;
+  font-size: 28px;
   text-decoration: underline;
   margin-bottom: 0;
 }
 section > p {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 30px;
@@ -284,7 +269,7 @@ section > p {
   background: center/cover url(img/mitsui.JPG);
   color: white;
   h1 {
-    margin-top: 50px;
+    margin-top: 40px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
   }
@@ -297,6 +282,8 @@ section > p {
   button {
     float: right;
     margin-left: 3px;
+    border-radius: 5px;
+    padding: 5px;
   }
 }
 
@@ -325,22 +312,21 @@ section > p {
     // 年表 
     table {
       margin: 0 auto;
-      border-collapse: collapse; //１重線
+      border-collapse: collapse; // １重線
     }
     // 趣味
     .hobby {
-      text-align: center;
       padding: 0;
       a {
         @include acolor;
-        color: rgb(126, 77, 77);
+        color: rgb(53, 185, 82);
       }
     }
   }
 
   .back {
     text-align: center;
-    // チャート
+    // グラフ
     .chart {
       width: 70%;
       background: #aacebb;
@@ -349,19 +335,13 @@ section > p {
       margin: 30px auto; // text-align:が使えず
       box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.5);      
     }
-    // スキルその他
+    // その他スキル
     .script {
       margin-top: 5px;
       padding: 0 20px;
-      li {
-        cursor: pointer;
-        .done {
-          text-decoration: line-through;
-        }
-      }
     }
   }
-  
+
   /* 年表ボタン */
   .btn {
     color: #000;
@@ -380,7 +360,6 @@ section > p {
       top: 5px;
     }
   }
-  
   /* モーダルウィンドウ */
   #open, #close {
     cursor: pointer;
@@ -405,11 +384,11 @@ section > p {
   }
   #modal {
     background: #fff;
-    width: 300px;
+    width: 320px;
     padding: 20px;
     border-radius: 4px;
     position: absolute;
-    top: 140px;
+    top: 90px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -513,28 +492,28 @@ section > p {
   border-radius: 50px 50px 0 0;
   background: rgb(240, 190, 99);
   text-align: center;
-  /* テキスト枠 */
-  .textline {
+  .textline { // テキスト枠
     padding: 10px;
     border-radius: 8px;
   }
-  /* 年齢 */
-  .age {
+  .age { // 年齢
     margin-top: 14px;
   }
-  /* 連絡方法 */
-  .conect {
+  .conect { // 連絡方法
     display: inline;
     border-radius: 14px;
     margin: 5px auto 0;
     text-align: left;
   }
-  // お問い合わせ内容
-  .naiyo {
+  .naiyo { // 内容
     margin: 3px auto 5px;
   }
-  /* 送信ボタン */
-  .submit {
+  .error-message { // 未入力
+    color: #ff4d75;
+    margin: 0 auto 10px;
+    text-align: left;
+  }
+  .submit { // 送信ボタン
     display       : inline-block;
     border-radius : 10px;
     font-size     : 12pt;
@@ -551,10 +530,27 @@ section > p {
       box-shadow: none; /* 影消去 */
     }
   }
-  // 確認ボタン
-  .checked {
-    text-align: center;
-  }  
+  .submit-m { // 送信完了 
+    padding: 20px 30px;
+    background-color: rgba(48, 214, 184, 0.16);
+    border: 1px dashed #dd4b11;
+    border-radius: 30px;
+    text-align: left;
+    h4 {
+      text-align: center;
+    }
+    p {
+      margin-bottom: 0;
+      text-decoration: underline;
+    }
+    span {
+      color: #883ddd;
+      font-size: 20px;
+    }
+    .checked { // 確認ボタン
+      text-align: center;
+    }  
+  }
 }
 //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /* いいねボタン */
