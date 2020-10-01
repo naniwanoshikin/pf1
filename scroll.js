@@ -4,9 +4,9 @@
   // chart.js
   let node = {
     duration: 900,
-    distance: '40%',
+    distance: '20%',
     origin: 'right',
-    opacity: 0.7, 
+    opacity: 0.7,
     scale: 1.2,
     viewFactor: 0.7,
     interval: 800, // 出だしの遅さ
@@ -17,26 +17,31 @@
     },
     easing: 'ease-in-out',
   };
-  // 写真
+  // JS
   let imgSlide = {
     duration: 800,
-    distance: '40%',
+    distance: '30%',
     origin: 'left',
-    opacity: 0.7, 
+    opacity: 0.7,
     scale: 1.5,
     // delay: 20,
     // viewFactor: 0,
     interval: 400,
+    rotate: { // 回転
+      x: 70,
+      y: 80,
+      z: 30, // 正面周り
+    },
   };
   // React.js
   let slideUp = {
     duration: 900, // アニメーションの長さ
-    distance: '40%', // 移動距離
+    distance: '20%', // 移動距離
     origin: 'left', // 下から
     opacity: 0.7, // 薄さ
     scale: 2, // 初期サイズ
-    delay: 20, // アニメーションの遅延
-    viewFactor: 0.8, // どれくらい見えたら実行するか 0-1
+    delay: 10, // アニメーションの遅延
+    viewFactor: 0.6, // どれくらい見えたら実行するか 0-1
     rotate: { // 回転
       x: 50,
       y: 90,
@@ -45,18 +50,17 @@
   };
 
   // 対象
-  let node1 = document.querySelector('.chart'); // グラフ
-  let nodeList1 = document.querySelectorAll('.pic > img'); // 写真
-  let nodeArray1 = [ // ここにAll入れることはできない？ // React.js
+  let node1 = document.querySelector('.chart');
+  let nodeList1 = document.querySelectorAll('.javalist');
+  let nodeArray1 = [
+    // document.querySelector('#root0'),
     document.querySelector('#root1'),
-    // document.querySelector('#root1'),
     document.querySelector('#root2'),
-    document.querySelector('#conta'),
   ];
 
   // 実行（対象、設定名）
-  ScrollReveal().reveal(node1, node); // グラフ
-  // ScrollReveal().reveal(nodeList1, imgSlide);
-  ScrollReveal().reveal(nodeArray1, slideUp); // React
+  ScrollReveal().reveal(node1, node); // chart.js
+  // ScrollReveal().reveal(nodeList1, imgSlide); // javascript
+  ScrollReveal().reveal(nodeArray1, slideUp); // React.js
 
 }
